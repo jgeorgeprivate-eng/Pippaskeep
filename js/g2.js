@@ -1,0 +1,130 @@
+"use strict";
+/* Part 2, lessons 2.5 to 2.7 */
+
+LESSONS['2.5'] = {
+  title:'Chapter 1',
+  intro:['Chapter 1 introduces Nick, the Buchanans and Jordan Baker. Gatsby is talked about and is seen only once, at the very end, alone in the dark.',
+    'Use the slider to go through the chapter in order. Each step says what happens and what each person feels.'],
+  steps:{h:'Chapter 1, step by step', lab:'What people feel', items:[
+    ['1. Nick introduces himself', 'Nick says his father taught him not to criticise people who have had fewer advantages than he has. He tells us he came back from the East disgusted with everyone there except Gatsby.', 'Nick, looking back, is disappointed in people. He makes one exception. He admires Gatsby’s hope.'],
+    ['2. West Egg and East Egg', 'Nick rents a small house in West Egg, next to Gatsby’s huge mansion. Across the bay is East Egg, where the richest old families live.', 'Nick is hopeful. He feels that life is starting again with the summer.'],
+    ['3. Dinner at the Buchanans', 'Nick drives to East Egg for dinner with his cousin Daisy and her husband Tom. Tom shows off the house and talks about a racist book. Daisy is charming and jokes about everything. Their friend Jordan Baker is there.', 'Tom is restless and wants to dominate. Daisy is performing happiness. Jordan is bored.'],
+    ['4. The telephone rings', 'Tom is called to the telephone. Daisy follows him. Jordan tells Nick that the caller is Tom’s mistress in New York.', 'Daisy is humiliated and hides it. Nick is shocked that everyone knows and nobody acts.'],
+    ['5. Daisy talks to Nick', 'Alone with Nick, Daisy says she has become cynical. When her daughter was born, she hoped the girl would grow up to be a beautiful fool. Then she smirks, and Nick feels he has been watching an act.', 'Daisy is bitter. She believes that a clever woman only gets hurt. Nick is uneasy.'],
+    ['6. Gatsby on the lawn', 'Back home, Nick sees a man come out of the mansion. It is Gatsby. He stretches his arms towards the water. Nick looks and sees a single green light across the bay. When he looks back, Gatsby has gone.', 'Gatsby is full of longing. He is trembling. Nick is curious.']]},
+  sections:[
+    {h:'Tom', p:['Fitzgerald introduces Tom through his body. He has a hard mouth, arrogant eyes and a body Nick calls cruel. He stands with his legs apart on his porch and turns Nick around by the arm.',
+      'Tom peaked at 21 as a football star. Nothing since has matched it. Fitzgerald means that Tom has everything money can give and is still dissatisfied. His affair and his racist theories are both ways of feeling powerful.']},
+    {h:'Daisy', p:['Daisy’s great attraction is her voice. It is low and thrilling, and it makes people lean towards her. She says charming things that mean nothing, such as telling Nick he reminds her of a rose.',
+      'Under the charm she is unhappy. Tom was absent when their daughter was born. Her wish that the girl will be a fool is the most serious thing she says. She means that in her world a woman is better off not understanding what is done to her.'],
+      note:'Daisy’s lightness is an act. She knows about Tom’s affair and has decided she can do nothing.'},
+    {h:'The green light', p:['The green light is at the end of Daisy’s dock, though Nick does not know that yet. For Gatsby it stands for Daisy and for the future he wants with her.',
+      'Notice the first picture we get of Gatsby. He is alone, at night, reaching for something far away that he cannot touch. That picture sums up his whole story.']}],
+  means:[['Daisy laughs and jokes all through dinner.','She is covering her unhappiness. Her charm is a performance.'],['Tom says “Civilization’s going to pieces”.','He fears losing his place at the top. Fitzgerald means us to find him ignorant.'],['Daisy hopes her daughter will be “a beautiful little fool”.','A woman who understands her situation only suffers. Daisy is describing herself.'],['Nick feels “the basic insincerity” of Daisy’s speech.','Even her confession is partly for show. She will not act on it.'],['Gatsby stretches his arms towards a green light.','He longs for something out of reach: Daisy, and the past he had with her.']],
+  meansH:['What Chapter 1 says and what Fitzgerald means','The characters say little of what they feel. Here it is stated directly.','Chapter 1 says','Fitzgerald means'],
+  remember:'Tom is a bully with a mistress. Daisy is unhappy and hides it. Gatsby is alone, reaching for the green light.',
+  quotes:[
+    {id:'ga1', t:'what foul dust floated in the wake of his dreams', ref:'Chapter 1. Nick on Gatsby', cue:'Nick on what followed behind Gatsby’s dreams.', tech:'Metaphor', means:'Gatsby’s dream was fine. The people and events that surrounded it were dirty.', gaps:['foul','dust','wake','dreams']},
+    {id:'ga2', t:'an extraordinary gift for hope, a romantic readiness', ref:'Chapter 1. Nick on Gatsby', cue:'Nick names the quality he admired in Gatsby.', tech:'Narrator’s judgement', means:'Gatsby’s special quality is his capacity to hope. This is why Nick forgives him.', gaps:['extraordinary','gift','hope','romantic']},
+    {id:'ga3', t:'Civilization’s going to pieces,', ref:'Chapter 1. Tom', cue:'Tom’s outburst at dinner about civilization.', tech:'Direct speech', means:'Tom is afraid of losing his place at the top. He repeats racist ideas from a book.', gaps:['Civilization’s','pieces']},
+    {id:'ga4', t:'that’s the best thing a girl can be in this world, a beautiful little fool.', ref:'Chapter 1. Daisy', cue:'Daisy on what she hopes her daughter will be.', tech:'Irony', means:'A woman who understands her situation only suffers. Daisy is describing her own life.', gaps:['best','girl','beautiful','fool']},
+    {id:'ga5', t:'I felt the basic insincerity of what she had said.', ref:'Chapter 1. Nick on Daisy', cue:'Nick’s feeling straight after Daisy’s confession.', tech:'Narrator’s judgement', means:'Daisy’s unhappiness is real, and she is also performing it.', gaps:['basic','insincerity','said']},
+    {id:'ga6', t:'he stretched out his arms toward the dark water', ref:'Chapter 1. Nick on Gatsby', cue:'What Gatsby does when Nick first sees him.', tech:'Symbolic gesture', means:'Gatsby is reaching for something he cannot touch.', gaps:['stretched','arms','dark','water']},
+    {id:'ga7', t:'a single green light, minute and far away,', ref:'Chapter 1. Nick', cue:'What Nick sees across the bay.', tech:'Symbol', means:'The light is on Daisy’s dock. It stands for Gatsby’s dream of her.', gaps:['single','green','minute','far']}],
+  questions:[
+    ['Where does Nick live?','In a small rented house in West Egg, next to Gatsby',['In a mansion in East Egg','In New York City','In the valley of ashes'],'West Egg is the less fashionable village, where new money lives.'],
+    ['How does Fitzgerald first show Tom’s character?','Through his powerful, aggressive body',['Through his kindness to Nick','Through a letter','Through his poetry'],'Nick calls it “a cruel body”.'],
+    ['Who telephones during dinner?','Tom’s mistress',['Gatsby','Nick’s father','Daisy’s mother'],'Jordan tells Nick. Everyone at the table knows.'],
+    ['Why does Daisy hope her daughter will be a fool?','She believes a woman who understands her situation only suffers',['She dislikes her daughter','She thinks education is expensive','She is making a joke with no meaning'],'It is the bitterest thing she says, and it describes her own marriage.'],
+    ['What does Daisy feel under her charm?','Unhappiness and humiliation',['Complete contentment','Hatred of Nick','Fear of Jordan'],'Her gaiety is a performance.'],
+    ['What is Gatsby doing when Nick first sees him?','Standing alone at night, stretching his arms towards the bay',['Dancing at a party','Arguing with Tom','Driving his car'],'The first picture of Gatsby is of longing.'],
+    ['What does the green light stand for?','Daisy, and the future Gatsby hopes for with her',['Money in the bank','A warning to ships only','Tom’s jealousy'],'It is at the end of Daisy’s dock.'],
+    ['Why does Fitzgerald keep Gatsby out of the chapter until the end?','To build mystery around him',['Because Gatsby is unimportant','Because Nick dislikes him','Because Gatsby is abroad'],'We hear his name twice before we see him.']]
+};
+
+LESSONS['2.6'] = {
+  title:'Chapters 2 and 3',
+  intro:['These two chapters show two very different parties. In Chapter 2, Tom takes Nick to a small, drunken party in a New York apartment with his mistress, Myrtle. In Chapter 3, Nick goes to one of Gatsby’s huge parties and meets Gatsby at last.',
+    'Chapter 2 also introduces the valley of ashes, the grey place where the poor live.'],
+  steps:{h:'Chapters 2 and 3, step by step', lab:'What people feel', items:[
+    ['1. The valley of ashes', 'Between West Egg and New York lies a dumping ground for ash. Everything is grey. Above it stands an old advertisement for an eye doctor: two enormous eyes behind yellow glasses.', 'Nick finds it bleak. The men who work there seem to be crumbling like the ash.'],
+    ['2. Wilson’s garage', 'Tom takes Nick to a garage owned by George Wilson. Tom speaks to George in a friendly, mocking way. George’s wife, Myrtle, comes downstairs and walks straight past her husband. Tom tells her to take the next train.', 'George is hopeful that Tom will sell him a car. Myrtle is excited. Tom is contemptuous of George.'],
+    ['3. The apartment', 'In New York, Tom buys Myrtle a puppy. At the apartment he keeps for her, they hold a party with Myrtle’s sister and neighbours. Myrtle changes her dress and starts to behave like a grand lady.', 'Myrtle feels important. Nick is fascinated and wants to leave.'],
+    ['4. Tom hits Myrtle', 'Late at night Myrtle shouts Daisy’s name to prove that she can. Tom breaks her nose with his open hand.', 'Myrtle is defiant, then hurt. Tom is angry that a woman of her class has used his wife’s name.'],
+    ['5. Gatsby’s party', 'Nick is invited to a party next door. There are hundreds of guests, an orchestra and endless food and drink. Most guests were not invited and have never met the host. They swap rumours that he was a spy or killed a man.', 'The guests are excited and careless. Nick is uncomfortable and stays near Jordan.'],
+    ['6. Nick meets Gatsby', 'In the library a drunk man in owl-eyed glasses is amazed that the books are real. Later Nick chats to a polite stranger, who turns out to be Gatsby. Gatsby drinks nothing and stands alone, watching.', 'Gatsby is courteous and apart. Nick is surprised by how young and how formal he is.'],
+    ['7. Jordan and the car', 'Leaving the party, a drunk guest drives into a ditch. Later in the summer Nick grows close to Jordan. He learns that she lies, and that she drives carelessly because she expects others to keep out of her way.', 'Nick is attracted to Jordan and knows she cannot be trusted.']]},
+  sections:[
+    {h:'Two parties compared', p:['Myrtle’s party is small, crowded and cheap. Gatsby’s is enormous and expensive. Both are full of drink, gossip and people pretending. Both end badly, one with a broken nose and one with a crashed car.',
+      'Fitzgerald means that the difference between the classes is money and nothing else. The behaviour is the same.']},
+    {h:'Myrtle and class', p:['Myrtle wants to rise out of the valley of ashes. With Tom she copies the manners of the rich and complains about servants. She says she married George because she thought he was a gentleman, and regretted it when she learned he had borrowed his wedding suit.',
+      'Tom allows her to play at being rich. He will not allow her to speak Daisy’s name. The broken nose shows exactly where she stands. To Tom she is something he owns, and she is far below his wife.'],
+      note:'Myrtle thinks Tom will marry her. Tom has no intention of doing so.'},
+    {h:'Gatsby the host', p:['Gatsby gives the parties and takes no part in them. He does not drink. Nobody leans on his shoulder. He is always looking for someone.',
+      'We later learn why. The parties exist for one purpose: he hopes Daisy will walk in one night. The guests who use his house mean nothing to him, and he means nothing to them.']},
+    {h:'The eyes', p:['The eyes of Doctor T. J. Eckleburg look down on the valley of ashes. They are only an old advertisement. But they are placed over the spot where Tom meets his mistress, and later over the spot where Myrtle dies.',
+      'Fitzgerald uses them to suggest a watcher who sees everything and does nothing. In Chapter 8, George Wilson will take them for the eyes of God.']}],
+  means:[['The valley is covered in grey ash.','This is where the waste of the rich ends up, and where the poor live. The boom has a cost.'],['Myrtle walks through her husband “as if he were a ghost”.','George does not exist for her. She has already left him in her mind.'],['Tom breaks Myrtle’s nose.','Tom is violent, and he will not let his mistress claim equality with his wife.'],['The owl-eyed man is amazed the books are real.','He expected Gatsby to be a fake. Gatsby’s display is real on the surface. The pages have never been read.'],['Jordan says “It takes two to make an accident”.','The rich expect other people to get out of their way. This prepares us for the crash in Chapter 7.']],
+  meansH:['What Chapters 2 and 3 say and what Fitzgerald means','Five details with the meaning stated directly.','The chapters say','Fitzgerald means'],
+  remember:'The valley of ashes is the cost of the boom. Tom’s violence shows what Myrtle is to him. Gatsby stands apart at his own party, waiting for Daisy.',
+  quotes:[
+    {id:'gb1', t:'ash-grey men, who move dimly and already crumbling through the powdery air.', ref:'Chapter 2. Nick', cue:'Nick describes the men of the valley of ashes.', tech:'Imagery', means:'The poor are worn down until they seem made of the same ash as the place.', gaps:['ash-grey','dimly','crumbling','powdery']},
+    {id:'gb2', t:'The eyes of Doctor T. J. Eckleburg are blue and gigantic', ref:'Chapter 2. Nick', cue:'Nick describes the advertisement above the valley.', tech:'Symbol', means:'The eyes suggest a watcher who sees everything and does nothing.', gaps:['eyes','Eckleburg','blue','gigantic']},
+    {id:'gb3', t:'He’s so dumb he doesn’t know he’s alive.', ref:'Chapter 2. Tom on George Wilson', cue:'Tom’s opinion of George Wilson.', tech:'Direct speech', means:'Tom has complete contempt for the man whose wife he is taking.', gaps:['dumb','know','alive']},
+    {id:'gb4', t:'Tom Buchanan broke her nose with his open hand.', ref:'Chapter 2. Nick', cue:'What Tom does when Myrtle shouts Daisy’s name.', tech:'Blunt statement', means:'Tom uses violence to keep Myrtle in her place.', gaps:['broke','nose','open','hand']},
+    {id:'gb5', t:'men and girls came and went like moths', ref:'Chapter 3. Nick', cue:'Nick on the guests in Gatsby’s gardens.', tech:'Simile', means:'The guests are drawn to Gatsby’s lights and care nothing for him.', gaps:['men','girls','came','moths']},
+    {id:'gb6', t:'She was incurably dishonest.', ref:'Chapter 3. Nick on Jordan', cue:'Nick’s judgement of Jordan.', tech:'Narrator’s judgement', means:'Jordan lies to avoid ever being at a disadvantage.', gaps:['incurably','dishonest']},
+    {id:'gb7', t:'It takes two to make an accident.', ref:'Chapter 3. Jordan', cue:'Jordan’s excuse for driving carelessly.', tech:'Foreshadowing', means:'The rich expect others to get out of their way. A fatal accident is coming.', gaps:['two','make','accident']}],
+  questions:[
+    ['What is the valley of ashes?','A grey dumping ground between the Eggs and New York, where the poor live',['Gatsby’s garden','A street in East Egg','A nightclub in New York'],'It is where the ash from the city’s fires is dumped.'],
+    ['What are the eyes of Doctor T. J. Eckleburg?','An old advertisement for an eye doctor',['A painting in Gatsby’s house','The headlights of Tom’s car','A lighthouse'],'They look down on the valley and come to suggest a watching god.'],
+    ['Why does Tom break Myrtle’s nose?','She keeps shouting Daisy’s name',['She steals his money','She insults Nick','She wants to go home'],'He will not let his mistress claim equality with his wife.'],
+    ['What does Myrtle want?','To escape her class and live like the rich',['To run the garage','To return to her husband','To move to the Midwest'],'She copies the manners of the wealthy when she is with Tom.'],
+    ['How does Gatsby behave at his own party?','He stands apart, sober and watchful',['He dances all night','He makes a long speech','He argues with the guests'],'The parties are for Daisy. He takes no pleasure in them.'],
+    ['What surprises the owl-eyed man in the library?','The books are real',['The books are missing','Gatsby is reading','The library is locked'],'He expected cardboard. The pages are uncut, so nobody has read them.'],
+    ['How are the two parties alike?','Both are full of drink and pretending, and both end badly',['Both are small and private','Both are given by Tom','Both happen in the valley of ashes'],'Fitzgerald shows the same behaviour in both classes.'],
+    ['What does “It takes two to make an accident” tell us about Jordan?','She expects other people to take care so that she does not have to',['She is a careful driver','She has never driven','She is afraid of cars'],'This attitude belongs to the whole rich set, and it leads to Myrtle’s death.']]
+};
+
+LESSONS['2.7'] = {
+  title:'Chapters 4 and 5',
+  intro:['In Chapter 4, Gatsby tells Nick a false story of his life, and Jordan tells Nick the true story of Gatsby and Daisy. In Chapter 5, Gatsby and Daisy meet again after almost five years.',
+    'Chapter 5 is the middle of the novel and the happiest point in it.'],
+  steps:{h:'Chapters 4 and 5, step by step', lab:'What people feel', items:[
+    ['1. Gatsby’s story', 'Gatsby drives Nick to New York. He says he comes from a wealthy family in the Midwest, went to Oxford University and was a war hero. He shows a medal and a photograph as proof.', 'Gatsby is anxious to be believed. Nick nearly laughs, then half believes him.'],
+    ['2. Lunch with Wolfshiem', 'Gatsby introduces Nick to Meyer Wolfshiem, a gambler who fixed the 1919 World Series. Wolfshiem’s cufflinks are made from human teeth.', 'Nick is startled. He begins to see where Gatsby’s money comes from.'],
+    ['3. Jordan’s story', 'Jordan tells Nick that in 1917 Daisy and a young officer, Gatsby, were in love. He went to war. She married Tom. The night before the wedding she got drunk, clutching a letter, and said she had changed her mind. She married Tom the next day.', 'Daisy, in 1917, was heartbroken and then gave in. Nick is amazed.'],
+    ['4. The request', 'Jordan explains that Gatsby bought his house to be across the bay from Daisy. He wants Nick to invite Daisy to tea so that he can come over.', 'Nick is moved by how small the request is after so much effort.'],
+    ['5. The meeting', 'On a rainy afternoon Daisy comes to Nick’s house. Gatsby is pale and stiff with nerves. He knocks a clock off the mantelpiece and catches it. Nick leaves them alone. When he returns, Daisy has been crying and Gatsby is glowing.', 'Gatsby is terrified, then overjoyed. Daisy is surprised and moved.'],
+    ['6. The mansion and the shirts', 'Gatsby shows Daisy his house. He throws his expensive shirts in a heap on the table. Daisy cries into them and says she has never seen such beautiful shirts.', 'Gatsby is dazed with happiness. Daisy is overwhelmed.'],
+    ['7. The green light again', 'Gatsby tells Daisy about the green light on her dock. Nick sees that now Daisy is beside him, the light is only a light. He wonders whether the real Daisy can match Gatsby’s dream of her.', 'Gatsby is happy and faintly puzzled. Nick feels doubt.']]},
+  sections:[
+    {h:'Lies and truth', p:['Gatsby’s account of himself is mostly false. He says he is from the Midwest and names San Francisco, which is on the west coast. Yet the medal is real and he did spend time at Oxford.',
+      'Fitzgerald means that Gatsby is a mixture. He has invented himself, and some of the invention has become true. Nick, and the reader, cannot easily sort one from the other.']},
+    {h:'Why Daisy married Tom', p:['Daisy loved Gatsby, and he was poor and far away. Tom was present and enormously rich. He gave her a string of pearls worth a fortune. Her family expected the marriage.',
+      'For one evening she rebelled. Then she did what was expected. Fitzgerald means that Daisy wants love and wants security more. When she has to choose, she chooses the safe option. She will do the same in Chapter 7.'],
+      note:'Daisy’s choice in 1919 predicts her choice in 1922.'},
+    {h:'Why Daisy cries over the shirts', p:['The shirts are not what moves her. They prove that Gatsby is now rich. If he had been rich five years ago, she could have married him. She is crying for the life she might have had.',
+      'It also shows how Daisy thinks. She feels most strongly when feeling and money come together.']},
+    {h:'The dream and the real person', p:['For five years Gatsby has built up a picture of Daisy in his mind. No real person could match it. Nick says the picture has gone beyond her and beyond everything.',
+      'This is the turning point of the novel. Gatsby has what he wanted. From here, the real Daisy can only fall short of the dream.']}],
+  means:[['The clock Gatsby knocks over has stopped.','Gatsby wants to stop time and go back five years. He almost breaks the clock, and time cannot be put back.'],['It rains, and then the sun comes out.','The weather follows Gatsby’s feelings: misery and nerves first, then joy.'],['Daisy cries over the shirts.','She is grieving for the rich life with Gatsby that she missed.'],['“Now it was again a green light on a dock.”','Once Gatsby has Daisy, the symbol loses its magic. Wanting was better than having.'],['“The colossal vitality of his illusion.”','Gatsby’s dream of Daisy is bigger and more alive than the real woman.']],
+  meansH:['What Chapters 4 and 5 say and what Fitzgerald means','Five details with the meaning stated directly.','The chapters say','Fitzgerald means'],
+  remember:'Everything Gatsby has done was for Daisy. He gets her back in Chapter 5, and the real Daisy is already smaller than his dream.',
+  quotes:[
+    {id:'gc1', t:'Gatsby bought that house so that Daisy would be just across the bay.', ref:'Chapter 4. Jordan', cue:'Jordan explains why Gatsby bought his house.', tech:'Revelation', means:'Gatsby’s mansion and parties all exist for Daisy.', gaps:['bought','house','Daisy','bay']},
+    {id:'gc2', t:'He had waited five years and bought a mansion', ref:'Chapter 4. Nick on Gatsby', cue:'Nick on how long Gatsby waited and what he bought.', tech:'Narrator’s judgement', means:'Gatsby’s devotion is enormous, and all he asks is to come to tea.', gaps:['waited','five','years','mansion']},
+    {id:'gc3', t:'There are only the pursued, the pursuing, the busy, and the tired.', ref:'Chapter 4. Nick', cue:'Nick’s phrase sorting people into four kinds.', tech:'List', means:'Everyone is chasing someone or being chased. Gatsby pursues Daisy.', gaps:['pursued','pursuing','busy','tired']},
+    {id:'gc4', t:'They’re such beautiful shirts,', ref:'Chapter 5. Daisy', cue:'What Daisy sobs into Gatsby’s shirts.', tech:'Direct speech', means:'She is crying for the rich life with Gatsby that she missed.', gaps:['such','beautiful','shirts']},
+    {id:'gc5', t:'His count of enchanted objects had diminished by one.', ref:'Chapter 5. Nick on Gatsby', cue:'Nick on what Gatsby loses when the light becomes ordinary.', tech:'Metaphor', means:'The green light was magical while Daisy was out of reach. Now it is only a light.', gaps:['count','enchanted','objects','diminished']},
+    {id:'gc6', t:'the colossal vitality of his illusion.', ref:'Chapter 5. Nick on Gatsby', cue:'Nick on the size and life of Gatsby’s illusion.', tech:'Narrator’s judgement', means:'Gatsby’s dream of Daisy is bigger than the real woman, so she must fall short.', gaps:['colossal','vitality','illusion']}],
+  questions:[
+    ['What does Gatsby tell Nick about his past in Chapter 4?','That he comes from a wealthy family, went to Oxford and was a war hero',['That he was born poor in North Dakota','That he is a bootlegger','That he has never left New York'],'Much of it is false. The medal and the time at Oxford are real.'],
+    ['Who is Meyer Wolfshiem?','A gambler and criminal who is Gatsby’s business partner',['Gatsby’s father','A policeman','Tom’s lawyer'],'Meeting him shows Nick where Gatsby’s money comes from.'],
+    ['What happened the night before Daisy’s wedding?','She got drunk, held a letter and said she had changed her mind',['She ran away with Gatsby','She argued with Jordan','Tom broke her nose'],'The letter was from Gatsby. She married Tom the next day.'],
+    ['Why did Daisy marry Tom?','He was present and rich, and Gatsby was poor and far away',['She had never loved Gatsby','Gatsby told her to','She wanted to live in France'],'She wants love and wants security more.'],
+    ['Why did Gatsby buy his mansion?','So that he would be across the bay from Daisy',['To be near New York','Because Wolfshiem told him to','To be near Nick'],'Jordan tells Nick this in Chapter 4.'],
+    ['What does the stopped clock suggest?','Gatsby’s wish to stop time and return to the past',['That Nick is poor','That Daisy is late','That the house is haunted'],'He nearly breaks it. Time cannot be put back.'],
+    ['Why does Daisy cry over the shirts?','They show the rich life with Gatsby that she could have had',['She dislikes the colours','She is allergic to silk','Tom gave her the same shirts'],'Feeling and money come together for her.'],
+    ['What happens to the green light in Chapter 5?','It becomes just a light, because Gatsby now has Daisy beside him',['It goes out','It turns red','Tom removes it'],'Wanting was more magical than having.']]
+};
