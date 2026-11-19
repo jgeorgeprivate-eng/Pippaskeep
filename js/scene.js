@@ -1,5 +1,5 @@
 "use strict";
-/* The castle: what can be bought and how each thing is drawn. Scene is 360 by 400. */
+/* The castle: what can be bought and how each thing is drawn. Scene is 360 by 400, or 360 by 452 once the hedge maze is built. */
 var INK = '#1c2333', STONE = '#c9c5bb', STONE2 = '#b9b4a8', STONE3 = '#d6d2c7', AZ = '#27468f', GU = '#b3263a', OR = '#e3a61f', WOOD = '#a9794f';
 var ITEMS = [
   {id:'wall', name:'Curtain wall', cost:220, kind:'Walls and towers', desc:'The outer wall that encloses the castle.', box:'56 214 248 96'},
@@ -31,9 +31,10 @@ var ITEMS = [
   {id:'ivy', name:'Ivy', cost:50, kind:'Finishing touches', desc:'Ivy climbing the east end of the wall.', needs:'wall', box:'258 224 48 82'},
   {id:'raven', name:'Corbie the raven', cost:80, kind:'Finishing touches', desc:'The raven who tells the story of Macbeth, perched on the keep.', needs:'keep', box:'188 92 56 44'},
   {id:'falcon', name:'Falcon', cost:80, kind:'Finishing touches', desc:'A falcon gliding over the castle.', box:'118 26 84 48'},
-  {id:'dragon', name:'Dragon', cost:500, kind:'Finishing touches', desc:'A small dragon who sleeps on the east tower.', needs:'towerE', lock:3, box:'262 112 72 60'}
+  {id:'dragon', name:'Dragon', cost:500, kind:'Finishing touches', desc:'A small dragon who sleeps on the east tower.', needs:'towerE', lock:3, box:'262 112 72 60'},
+  {id:'maze', name:'Hedge maze', cost:200, kind:'Outside the walls', desc:'A maze of clipped hedges at the end of the path. Tap it in the castle to play a path puzzle. It comes with one maze key.', box:'84 396 194 58'}
 ];
-var DRAW_ORDER = ['falcon','windmill','poppies','keep','standard','raven','hall','chapel','towerW','towerE','dragon','wall','ivy','gatehouse','pennants','banners','torches','cat','moat','mill','boat','swans','jetty','drawbridge','cottages','orchard','market','sheep','minstrel','knight'];
+var DRAW_ORDER = ['falcon','windmill','poppies','keep','standard','raven','hall','chapel','towerW','towerE','dragon','wall','ivy','gatehouse','pennants','banners','torches','cat','moat','mill','boat','swans','jetty','drawbridge','cottages','orchard','market','sheep','minstrel','knight','maze'];
 function itemById(id){ for(var i = 0; i < ITEMS.length; i++) if(ITEMS[i].id === id) return ITEMS[i]; }
 function S(extra){ return ' stroke="'+INK+'" stroke-width="2" stroke-linejoin="round"'+(extra || ''); }
 function crenels(x0, x1, y, w, g){ var s = ''; for(var x = x0; x+w <= x1+0.5; x += w+g) s += '<rect x="'+x+'" y="'+(y-8)+'" width="'+w+'" height="9" fill="inherit"'+S()+'/>'; return s; }
@@ -88,23 +89,32 @@ var ART = {
   orchard:function(){ return [[104,372],[124,366],[138,378]].map(function(p){ return '<rect x="'+(p[0]-2)+'" y="'+(p[1]+8)+'" width="4" height="12" fill="#6b4a32"/><circle cx="'+p[0]+'" cy="'+p[1]+'" r="11" fill="#4f9a5f"'+S(' stroke-width="1.5"')+'/><circle cx="'+(p[0]-4)+'" cy="'+(p[1]-2)+'" r="2" fill="'+GU+'"/><circle cx="'+(p[0]+4)+'" cy="'+(p[1]+3)+'" r="2" fill="'+GU+'"/><circle cx="'+(p[0]+2)+'" cy="'+(p[1]-6)+'" r="2" fill="'+GU+'"/>'; }).join(''); },
   market:function(){ return '<rect x="262" y="376" width="56" height="18" fill="'+WOOD+'"'+S()+'/><path d="M266 376 V362 M314 376 V362" stroke="'+INK+'" stroke-width="2"/><path d="M256 364 H324 L318 354 H262 Z" fill="#fff"'+S()+'/>'+
     '<path d="M270 354 l-3 10 h11 l1 -10 Z M288 354 l0 10 h11 l-1 -10 Z M306 354 l1 10 h11 l-5 -10 Z" fill="'+GU+'"/><circle cx="274" cy="372" r="3.5" fill="'+OR+'"/><circle cx="283" cy="372" r="3.5" fill="#4f9a5f"/><circle cx="292" cy="372" r="3.5" fill="'+GU+'"/><rect x="300" y="368" width="12" height="8" fill="#f3ead0"'+S(' stroke-width="1.2"')+'/>'; },
+  maze:function(){
+    var walls = 'M175 410 H91 V446 H271 V410 H187 M103 422 H139 V434 M103 434 H127 M151 410 V422 H163 V434 M175 410 V422 M175 434 H199 V422 H211 M187 446 V434 M223 410 V434 H247 M235 422 H259 M211 434 V446 M139 446 V434';
+    return '<rect x="91" y="410" width="180" height="36" fill="#dccb9f"/><path d="'+walls+'" fill="none" stroke="'+INK+'" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round"/><path d="'+walls+'" fill="none" stroke="#4f9a5f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>'+
+      '<circle cx="170" cy="405" r="5" fill="#4f9a5f"'+S(' stroke-width="1.5"')+'/><circle cx="192" cy="405" r="5" fill="#4f9a5f"'+S(' stroke-width="1.5"')+'/>'; },
   knight:function(){ return '<g class="trot"><ellipse cx="180" cy="382" rx="13" ry="7" fill="#f3ead0"'+S()+'/><path d="M171 386 v9 M177 388 v8 M184 388 v8 M190 386 v9" stroke="'+INK+'" stroke-width="2.2" stroke-linecap="round"/>'+
     '<path d="M190 378 q8 -10 12 -4 q2 4 -6 6 Z" fill="#f3ead0"'+S()+'/><path d="M167 380 q-6 2 -5 8" fill="none" stroke="'+INK+'" stroke-width="2" stroke-linecap="round"/>'+
     '<rect x="175" y="364" width="9" height="13" rx="2" fill="'+STONE2+'"'+S(' stroke-width="1.5"')+'/><circle cx="179.5" cy="360" r="4.5" fill="'+STONE3+'"'+S(' stroke-width="1.5"')+'/><path d="M179 356 q3 -7 8 -4" fill="none" stroke="'+GU+'" stroke-width="2.5" stroke-linecap="round"/>'+
     '<line x1="187" y1="372" x2="187" y2="350" stroke="'+INK+'" stroke-width="1.6"/><path class="wave" d="M187 350 h9 l-3 3 l3 3 h-9 Z" fill="'+AZ+'"/></g>'; }
 };
-function backdrop(){
-  return '<rect width="360" height="400" fill="#bfe0ee"/><circle cx="302" cy="52" r="20" fill="#fbe7a1"/>'+
+function backdrop(H){
+  return '<rect width="360" height="'+H+'" fill="#bfe0ee"/><circle cx="302" cy="52" r="20" fill="#fbe7a1"/>'+
     '<g fill="#fff"><ellipse cx="70" cy="60" rx="30" ry="10"/><ellipse cx="88" cy="52" rx="18" ry="9"/><ellipse cx="226" cy="84" rx="24" ry="8"/></g>'+
-    '<path d="M0 250 C60 206 120 226 170 236 C230 204 300 214 360 244 V400 H0 Z" fill="#a8cf9c"/>'+
-    '<path d="M0 286 C80 262 280 262 360 286 V400 H0 Z" fill="#86bf74"/><path d="M0 356 C90 346 270 346 360 356 V400 H0 Z" fill="#79b368"/>'+
-    '<path d="M160 356 C158 372 150 384 140 400 H222 C212 384 204 372 200 356 Z" fill="#dccb9f"/>';
+    '<path d="M0 250 C60 206 120 226 170 236 C230 204 300 214 360 244 V'+H+' H0 Z" fill="#a8cf9c"/>'+
+    '<path d="M0 286 C80 262 280 262 360 286 V'+H+' H0 Z" fill="#86bf74"/><path d="M0 356 C90 346 270 346 360 356 V'+H+' H0 Z" fill="#79b368"/>'+
+    '<path d="M160 356 C158 372 150 384 140 400 '+(H > 400 ? 'L136 412 H226 L222 400 ' : 'H222 ')+'C212 384 204 372 200 356 Z" fill="#dccb9f"/>';
 }
-// owned: a map of item ids. Draws the whole scene.
-function sceneSVG(owned){
-  var s = backdrop();
+// owned: a map of item ids. Draws the whole scene. The grounds grow at the bottom once the hedge maze is built.
+// live: true when the maze can be tapped to open the puzzle.
+function sceneSVG(owned, live){
+  var H = owned.maze ? 452 : 400, s = backdrop(H);
   if(!owned.wall && !owned.gatehouse && !owned.keep) s += ART.camp();
-  DRAW_ORDER.forEach(function(id){ if(owned[id]) s += ART[id](); });
-  return '<svg viewBox="0 0 360 400" role="img" aria-label="The castle">'+s+'</svg>';
+  DRAW_ORDER.forEach(function(id){
+    if(!owned[id]) return;
+    if(id === 'maze' && live) s += '<g class="mazehit" data-act="go:maze"><title>Enter the hedge maze</title><rect x="84" y="398" width="194" height="54" fill="#fff" fill-opacity="0"/>'+ART.maze()+'</g>';
+    else s += ART[id]();
+  });
+  return '<svg viewBox="0 0 360 '+H+'" role="img" aria-label="The castle">'+s+'</svg>';
 }
 function thumb(it){ return '<svg viewBox="'+it.box+'" aria-hidden="true"><rect x="-50" y="-50" width="500" height="500" fill="#cfe6d2"/>'+ART[it.id]()+'</svg>'; }

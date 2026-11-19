@@ -1,7 +1,7 @@
 "use strict";
 /* Pippa's Keep: state, small helpers and the marking of typed quotes. */
 var KEY = 'pippas-keep-v1';
-function fresh(){ return {coins:0, owned:{camp:1}, lessons:{}, quotes:{}, tests:{}}; }
+function fresh(){ return {coins:0, owned:{camp:1}, lessons:{}, quotes:{}, tests:{}, keys:0, maze:null, mazeBest:{}}; }
 var state = fresh();
 function load(){ try{ var s = JSON.parse(localStorage.getItem(KEY)); if(s && typeof s === 'object'){ state = Object.assign(fresh(), s); state.owned.camp = 1; if(state.lessons['1.3'] && !state.lessons['1.4']){ state.lessons['1.4'] = state.lessons['1.3']; delete state.lessons['1.3']; } } }catch(e){} }
 function save(){ try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){} }

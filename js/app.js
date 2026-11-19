@@ -17,6 +17,8 @@ function testPassed(p){ return !!(state.tests[p] && state.tests[p].passed); }
 function pips(lvl){ return '<span class="pips" aria-label="Level '+lvl+' of 3">'+[1,2,3].map(function(i){ return '<i'+(i <= lvl ? ' class="on"' : '')+'></i>'; }).join('')+'</span>'; }
 function toast(msg){ var t = $('#toast'); if(!t){ t = document.createElement('div'); t.id = 'toast'; t.className = 'toast'; t.setAttribute('role','status'); document.body.appendChild(t); } t.textContent = msg; t.hidden = false; clearTimeout(timers.toast); timers.toast = setTimeout(function(){ t.hidden = true; }, 2600); }
 function earn(n, why){ if(!n) return; state.coins += n; save(); toast('+'+n+' coins'+(why ? ': '+why : '')); }
+// One maze key for each piece of study finished, once the hedge maze has been built.
+function earnKey(){ if(!state.owned.maze) return; state.keys = (state.keys || 0)+1; save(); var t = $('#toast'); toast(t && !t.hidden ? t.textContent+' · +1 maze key' : '+1 maze key'); }
 
 /* ---------- castle ---------- */
 function nextStep(){
@@ -34,9 +36,11 @@ function nextStep(){
 function vCastle(){
   var owned = {}; if(preview) ITEMS.forEach(function(it){ owned[it.id] = 1; }); else owned = state.owned;
   var n = ITEMS.filter(function(it){ return state.owned[it.id]; }).length, all = allQuotes();
-  return '<div class="scene">'+sceneSVG(owned)+'</div>'+
+  var mz = state.maze, keys = state.keys || 0;
+  return '<div class="scene">'+sceneSVG(owned, !preview && !!state.owned.maze)+'</div>'+
     (preview ? '<p class="small muted">This is the finished castle. Your own castle has '+n+' of '+ITEMS.length+' things built.</p>' : '')+
     '<div class="card"><h2>What to do next</h2>'+nextStep()+'</div>'+
+    (state.owned.maze && !preview ? '<div class="card flat"><div class="row between"><b>Hedge maze</b><span class="chip gold">'+plural(keys,'maze key')+'</span></div><p class="small">'+(mz && !mz.solved ? 'You have a maze to finish.' : keys ? 'A key opens one new maze.' : 'Finish a lesson, a quiz or a quote practice to earn a key.')+'</p><div><button class="btn plain" data-act="go:maze">Enter the maze</button></div></div>' : '')+
     '<div class="card flat"><div class="row between"><b>Quotes known by heart</b><span class="chip gold">'+knownCount()+' of '+all.length+'</span></div><div class="bar"><i style="width:'+(all.length ? knownCount()/all.length*100 : 0)+'%"></i></div>'+
     '<div class="row between"><b>Castle built</b><span class="chip">'+n+' of '+ITEMS.length+'</span></div><div class="bar"><i style="width:'+(n/ITEMS.length*100)+'%"></i></div></div>'+
     '<div class="row"><button class="btn plain" data-act="preview">'+(preview ? 'Back to my castle' : 'See the finished castle')+'</button><button class="btn plain" data-act="go:about">How the Keep works</button></div>';
@@ -222,7 +226,7 @@ function checkRecall(giveUp){
   }
   st.tries++;
   var gain = 0;
-  if(ok){ recall.right++; if(p.lvl > st.lvl){ st.lvl = p.lvl; gain += 3; recall.ups++; if(p.lvl === 3 && !st.bonus){ st.bonus = true; gain += 5; } } }
+  if(ok){ recall.right++; if(p.lvl > st.lvl){ st.lvl = p.lvl; gain += 10; recall.ups++; if(p.lvl === 3 && !st.bonus){ st.bonus = true; gain += 10; } } }
   else if(st.lvl >= p.lvl) st.lvl = p.lvl-1;
   state.coins += gain; recall.coins += gain;
   recall.res = {ok:ok, shown:shown, slips:slips, given:given, gain:gain, gaveUp:!!giveUp};
@@ -346,7 +350,8 @@ function stopStory(){ clearInterval(timers.story); timers.story = null; }
 function vAbout(){
   return '<div><button class="btn plain" data-act="go:castle">Back to the castle</button></div><h1>How the Keep works</h1>'+
     '<p>Pippa’s Keep covers three texts: the war poems of Wilfred Owen, The Great Gatsby and Macbeth. Learning earns coins, and coins build the castle.</p>'+
-    '<div class="tablewrap"><table class="t"><tr><th>What you do</th><th>Coins</th></tr><tr><td>Finish a lesson or watch a story</td><td>20</td></tr><tr><td>Each correct quiz answer, first time</td><td>10</td></tr><tr><td>Each correct quiz answer, on a repeat</td><td>5</td></tr><tr><td>Move a quote up one level</td><td>3</td></tr><tr><td>Know a quote by heart for the first time</td><td>5 more</td></tr></table></div>'+
+    '<div class="tablewrap"><table class="t"><tr><th>What you do</th><th>Coins</th></tr><tr><td>Finish a lesson or watch a story</td><td>20</td></tr><tr><td>Each correct quiz answer, first time</td><td>10</td></tr><tr><td>Each correct quiz answer, on a repeat</td><td>5</td></tr><tr><td>Move a quote up one level</td><td>10</td></tr><tr><td>Know a quote by heart for the first time</td><td>10 more</td></tr></table></div>'+
+    '<h2>The hedge maze</h2><p>The hedge maze is in the shop. Once it is built, each lesson, story, quiz, quote practice or test you finish earns one maze key. A key opens one new maze. Solving a maze earns no coins.</p>'+
     '<h2>Quote levels</h2><ul class="plain"><li><b>Level 1:</b> type the missing words.</li><li><b>Level 2:</b> finish the line.</li><li><b>Level 3:</b> type the whole quote from memory.</li></ul><p>If you get a quote wrong at a level you had passed, it drops back one level so that you practise it again.</p>'+
     '<h2>Tests</h2><p>Each of the three parts has a test of 20 questions: 10 multiple choice and 10 finish-the-line. A score of 14 or more passes. The first pass earns 100 coins and unlocks a special building.</p>'+
     '<h2>Where the words come from</h2><p>Every quotation in the Keep has been checked against the text. Owen’s poems follow the 1920 edition of his Poems. Macbeth and The Great Gatsby follow the Project Gutenberg texts, so a few spellings may differ from your school copy. If they do, learn the spelling in your school copy.</p>'+
@@ -355,8 +360,8 @@ function vAbout(){
 }
 
 /* ---------- routing ---------- */
-var VIEWS = {castle:vCastle, learn:vLearn, lesson:vLesson, test:vTest, quiz:vQuiz, recall:vRecall, quotes:vQuotes, shop:vShop, story:vStory, about:vAbout};
-var TAB_OF = {castle:'castle', about:'castle', learn:'learn', lesson:'learn', test:'learn', quiz:'learn', story:'learn', recall:'quotes', quotes:'quotes', shop:'shop'};
+var VIEWS = {castle:vCastle, learn:vLearn, lesson:vLesson, test:vTest, quiz:vQuiz, recall:vRecall, quotes:vQuotes, shop:vShop, story:vStory, about:vAbout, maze:Maze.html};
+var TAB_OF = {castle:'castle', about:'castle', maze:'castle', learn:'learn', lesson:'learn', test:'learn', quiz:'learn', story:'learn', recall:'quotes', quotes:'quotes', shop:'shop'};
 function render(){
   var main = $('#main'), y = main.scrollTop;
   main.innerHTML = VIEWS[view]();
@@ -366,6 +371,7 @@ function render(){
   if(c.textContent !== String(state.coins)){ c.textContent = state.coins; bump(c.parentNode); }
   if(k.textContent !== String(kc)){ k.textContent = kc; bump(k.parentNode); }
   if(view === 'lesson') bindLesson();
+  if(view === 'maze') Maze.mount();
   if(view === 'recall' && recall && !recall.done && !recall.res){ var f = $('#g0') || $('#ans'); if(f) try{ f.focus({preventScroll:true}); }catch(e){} }
   if(view === 'test' && test && !test.done && !test.res){ var tf = $('#ans'); if(tf) try{ tf.focus({preventScroll:true}); }catch(e){} }
 }
@@ -375,6 +381,8 @@ function go(v, top){
   scrollMem[view] = $('#main').scrollTop;
   if(view === 'lesson' && v !== 'lesson'){ stopStages(); stopSteps(); }
   if(view === 'story' && v !== 'story') stopStory();
+  if(view === 'maze' && v !== 'maze') Maze.leave();
+  if(v === 'maze' && view !== 'maze') Maze.arrive();
   if(v !== 'about') ui.reset = false;
   view = v; render();
   $('#main').scrollTop = top ? 0 : (v === 'learn' || v === 'shop' || v === 'quotes' ? (scrollMem[v] || 0) : 0);
@@ -382,6 +390,7 @@ function go(v, top){
 function act(a){
   var i = a.indexOf(':'), cmd = i < 0 ? a : a.slice(0,i), arg = i < 0 ? '' : a.slice(i+1), L;
   if(cmd === 'go') go(arg);
+  else if(cmd === 'mz') Maze.act(arg);
   else if(cmd === 'preview'){ preview = !preview; render(); $('#main').scrollTop = 0; }
   else if(cmd === 'lesson'){ if(LESSONS[arg]){ cur = arg; ui.note = null; ui.stage = 0; ui.step = 0; ui.person = null; ui.aloud = false; go('lesson', true); } }
   else if(cmd === 'stepNext' || cmd === 'stepPrev'){ var n = LESSONS[cur].steps.items.length; ui.step = Math.max(0, Math.min(n-1, ui.step+(cmd === 'stepNext' ? 1 : -1))); refreshStep(); }
@@ -398,12 +407,12 @@ function act(a){
     ui.stage = 1; $('#stage').value = 1; refreshStage(); $('#playbtn').textContent = 'Stop';
     timers.stages = setInterval(function(){ if(view !== 'lesson' || ui.stage >= 4){ stopStages(); return; } ui.stage++; $('#stage').value = ui.stage; refreshStage(); }, 3500);
   }
-  else if(cmd === 'finish'){ L = lessonState(cur); if(!L.done){ L.done = true; earn(20, 'lesson finished'); } render(); }
+  else if(cmd === 'finish'){ L = lessonState(cur); if(!L.done){ L.done = true; earn(20, 'lesson finished'); earnKey(); } render(); }
   else if(cmd === 'quiz') startQuiz(arg);
   else if(cmd === 'answer'){ if(quiz && quiz.picked === null){ quiz.picked = +arg; var q = quiz.qs[quiz.i]; if(quiz.picked === q.correct) quiz.score++; else quiz.wrong.push({q:q, picked:quiz.picked}); render(); reveal('#main [data-act=nextQ]'); } }
   else if(cmd === 'nextQ'){
     if(quiz.i+1 < quiz.qs.length){ quiz.i++; quiz.picked = null; render(); $('#main').scrollTop = 0; }
-    else { L = lessonState(quiz.id); quiz.coins = quiz.score*(quiz.first ? 10 : 5); L.quizzes++; L.best = Math.max(L.best, quiz.score); quiz.done = true; earn(quiz.coins, 'quiz'); render(); $('#main').scrollTop = 0; }
+    else { L = lessonState(quiz.id); quiz.coins = quiz.score*(quiz.first ? 10 : 5); L.quizzes++; L.best = Math.max(L.best, quiz.score); quiz.done = true; earn(quiz.coins, 'quiz'); earnKey(); render(); $('#main').scrollTop = 0; }
   }
   else if(cmd === 'test') startTest(+arg);
   else if(cmd === 'tanswer'){ if(test && !test.res){ var tq = test.items[test.i].q, ok = +arg === tq.correct; test.res = {ok:ok, picked:+arg}; testMark(ok, '<p><b>'+tq.text+'</b></p><p>Correct answer: '+tq.opts[tq.correct]+'</p><p class="small">'+tq.explain+'</p>'); render(); reveal('#tnext'); } }
@@ -411,21 +420,21 @@ function act(a){
   else if(cmd === 'tnext'){
     if(test.i < 19){ test.i++; test.res = null; render(); $('#main').scrollTop = 0; }
     else { var tp = test.pi+1, rec = state.tests[tp] || (state.tests[tp] = {passed:false, best:0}), first = !rec.passed && test.score >= 14; rec.best = Math.max(rec.best, test.score); if(test.score >= 14) rec.passed = true; test.done = true; test.res = null;
-      if(first){ state.coins += 100; test.msg = 'You earned 100 coins, and the '+itemById(PARTS[test.pi].reward).name.toLowerCase().replace(/^the /,'')+' is now in the shop.'; } save(); render(); $('#main').scrollTop = 0; }
+      if(first){ state.coins += 100; test.msg = 'You earned 100 coins, and the '+itemById(PARTS[test.pi].reward).name.toLowerCase().replace(/^the /,'')+' is now in the shop.'; } save(); earnKey(); render(); $('#main').scrollTop = 0; }
   }
   else if(cmd === 'recall'){ if(allQuotes().length) startRecall(arg); }
   else if(cmd === 'check') checkRecall(false);
   else if(cmd === 'giveup') checkRecall(true);
-  else if(cmd === 'rnext'){ if(recall.i+1 < recall.ids.length){ recall.i++; buildPrompt(); } else recall.done = true; render(); $('#main').scrollTop = 0; }
-  else if(cmd === 'buy'){ var it = itemById(arg); if(it && !state.owned[it.id] && state.coins >= it.cost){ state.coins -= it.cost; state.owned[it.id] = 1; save(); toast('Built: '+it.name); render(); } }
+  else if(cmd === 'rnext'){ if(recall.i+1 < recall.ids.length){ recall.i++; buildPrompt(); } else { recall.done = true; earnKey(); } render(); $('#main').scrollTop = 0; }
+  else if(cmd === 'buy'){ var it = itemById(arg); if(it && !state.owned[it.id] && state.coins >= it.cost){ state.coins -= it.cost; state.owned[it.id] = 1; if(it.id === 'maze') state.keys = (state.keys || 0)+1; save(); toast('Built: '+it.name+(it.id === 'maze' ? '. It comes with one maze key.' : '')); render(); } }
   else if(cmd === 'story'){ story = {id:arg, i:0}; go('story', true); }
   else if(cmd === 'snext' || cmd === 'sprev'){ story.i = Math.max(0, Math.min(STORIES[story.id].scenes.length-1, story.i+(cmd === 'snext' ? 1 : -1))); render(); }
   else if(cmd === 'splay'){
     if(timers.story) stopStory(); else timers.story = setInterval(function(){ if(view !== 'story' || story.i >= STORIES[story.id].scenes.length-1){ stopStory(); if(view === 'story') render(); return; } story.i++; render(); }, 12000);
     render();
   }
-  else if(cmd === 'sfinish'){ L = lessonState(STORIES[story.id].lesson); if(!L.done){ L.done = true; earn(20, 'story watched'); } render(); }
-  else if(cmd === 'reset'){ if(ui.reset){ state = fresh(); save(); ui.reset = false; quiz = recall = story = null; toast('Progress cleared'); go('castle', true); } else { ui.reset = true; render(); } }
+  else if(cmd === 'sfinish'){ L = lessonState(STORIES[story.id].lesson); if(!L.done){ L.done = true; earn(20, 'story watched'); earnKey(); } render(); }
+  else if(cmd === 'reset'){ if(ui.reset){ Maze.leave(); state = fresh(); save(); ui.reset = false; quiz = recall = story = null; toast('Progress cleared'); go('castle', true); } else { ui.reset = true; render(); } }
 }
 document.addEventListener('click', function(e){ var t = e.target.closest ? e.target.closest('[data-act]') : null; if(t && !t.disabled){ e.preventDefault(); act(t.getAttribute('data-act')); } });
 document.addEventListener('keydown', function(e){ var m = e.target; if((e.key === 'Enter' || e.key === ' ') && m.classList && m.classList.contains('mk')){ e.preventDefault(); var k = m.getAttribute('data-act'); act(k); var again = document.querySelector('.mk[data-act="'+k+'"]'); if(again) again.focus(); } });

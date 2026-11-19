@@ -201,3 +201,36 @@ button.chip{cursor:pointer;font:inherit;font-family:var(--ui);font-weight:700}
 .pt p{margin:0}
 .pt .meta{font-family:var(--ui);font-size:14px;color:var(--ink-soft);display:flex;gap:8px;flex-wrap:wrap;align-items:center}
 blockquote.say{margin:0;padding:6px 12px;border-left:5px solid var(--azure);background:#fff;border-radius:0 8px 8px 0;font-size:19px;font-style:italic;line-height:1.35;max-width:65ch}
+
+/* hedge maze */
+.mazehit{cursor:pointer}
+.mzstats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;font-family:var(--ui)}
+.mzstats div{border-top:3px solid var(--ink);padding-top:3px;display:flex;flex-direction:column}
+.mzstats span{font-size:13px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;color:var(--ink-soft)}
+.mzstats b{font-size:24px;font-weight:800;line-height:1.1;font-variant-numeric:tabular-nums}
+.mzwrap{width:min(100%,62vh);margin:0 auto;transform-origin:50% 100%}
+.mzwrap.enter{animation:mzin .5s ease-out both}
+@keyframes mzin{from{opacity:0;transform:scale(.25)}to{opacity:1;transform:none}}
+.mzwrap.nudge{animation:mznudge .25s linear}
+@keyframes mznudge{25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+svg.mzboard{display:block;width:100%;aspect-ratio:1;touch-action:none;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent;cursor:pointer;border-radius:12px}
+svg.mzboard:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.mz-bg{fill:#e4f0dc;stroke:var(--ink);stroke-width:4}
+.mz-grid{stroke:#b7d2ac;stroke-width:2}
+.mz-cell{fill:var(--gules);opacity:0}
+.mz-cell.on{opacity:.15}
+.mz-hedge-out{stroke:var(--ink);stroke-width:17;stroke-linecap:round}
+.mz-hedge{stroke:#4f9a5f;stroke-width:10;stroke-linecap:round}
+.mz-path{fill:none;stroke:var(--gules);stroke-width:42;stroke-linecap:round;stroke-linejoin:round}
+.mz-head{fill:var(--vellum)}
+.mz-post{fill:var(--ink)}
+.mz-post.next{stroke:var(--gold);stroke-width:7}
+.mz-num{fill:var(--vellum);font-family:var(--ui);font-weight:800;font-size:40px;text-anchor:middle;pointer-events:none}
+.solved .mz-path{stroke:var(--gold)}
+.solved .mz-cell.on{fill:var(--gold);opacity:.3}
+.mzmsg{font-family:var(--ui);font-weight:700;font-size:16px;line-height:1.3;text-align:center;min-height:2.6em}
+.mzmsg.good{color:var(--vert)}
+.mzctl{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.mzsizes{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.mzctl .btn,.mzsizes .btn{padding:9px 4px}
+@media (prefers-reduced-motion:reduce){.mzwrap.enter,.mzwrap.nudge{animation:none}}
