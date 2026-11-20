@@ -186,18 +186,16 @@ var POEMS = {
 "Pawing us who [[dealt them war and madness|dealt]]."
 ],
 "preface": [
-"This book is [[not about heroes|heroes]]. English poetry is [[not yet fit to speak of them|fit]].",
-"",
-"Nor is it about deeds, or lands, nor anything about [[glory, honour, might, majesty, dominion, or power|glory]], [[except War|except]].",
-"",
-"Above all I am [[not concerned with Poetry|poetry]].",
-"",
-"My subject is War, and [[the pity of War|pity]].",
-"",
+"This book is [[not about heroes|heroes]]. English Poetry is [[not yet fit to speak of them|fit]]. Nor is it about deeds or lands, nor anything about [[glory, honour, dominion or power|glory]],",
+"[[except War|except]].",
+"Above all, this book is [[not concerned with Poetry|poetry]].",
+"The subject of it is War, and [[the pity of War|pity]].",
 "[[The Poetry is in the pity|inpity]].",
+"Yet these elegies are not to this generation,",
+"This is [[in no sense consolatory|console]].",
 "",
-"Yet these elegies are to this generation [[in no sense consolatory|console]]. [[They may be to the next|next]].",
-"",
-"[[All a poet can do today is warn|warn]]. That is why [[the true Poets must be truthful|truthful]]."
+"[[They may be to the next|next]].",
+"[[All the poet can do to-day is to warn|warn]].",
+"That is why [[the true Poets must be truthful|truthful]]."
 ]
 };

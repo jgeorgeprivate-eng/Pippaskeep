@@ -1,7 +1,7 @@
 "use strict";
 /* The three parts of the castle and their lessons. Only lessons with an entry in LESSONS are built. */
 var PARTS = [
-  {name:'The Battlements', text:'Wilfred Owen’s war poems', reward:'standard', lessons:['Wilfred Owen and the First World War','Owen’s Preface and Stallworthy’s introduction','Owen’s techniques','Dulce et Decorum Est','Disabled','Anthem for Doomed Youth','The Sentry','The Send-Off','Futility','Mental Cases','Themes across the poems']},
+  {name:'The Battlements', text:'Wilfred Owen’s war poems', reward:'standard', lessons:['Wilfred Owen and the First World War','Owen’s Preface and Stallworthy’s introduction','Owen’s techniques','Dulce et Decorum Est','Disabled','Anthem for Doomed Youth','The Sentry','The Send-Off','Futility','Mental Cases','Themes across the poems','Owen’s letters home']},
   {name:'The Great Hall', text:'The Great Gatsby', reward:'hall', lessons:['The story in pictures','Who is who','Fitzgerald and the Jazz Age','Nick Carraway, the narrator','Chapter 1','Chapters 2 and 3','Chapters 4 and 5','Chapter 6','Chapter 7','Chapters 8 and 9','Gatsby and Daisy','Tom, Myrtle, George and Jordan','Symbols and settings','Themes']},
   {name:'The Keep', text:'Macbeth', reward:'dragon', lessons:['The story in pictures','Who is who','Shakespeare, King James and the world of the play','Shakespeare’s language','Act 1, scenes 1 to 4','Act 1, scenes 5 to 7','Act 2','Act 3','Act 4','Act 5','Macbeth','Lady Macbeth','Banquo, Macduff, Duncan, Malcolm and the witches','Themes and imagery']}
 ];
@@ -19,51 +19,53 @@ LESSONS['1.2'] = {
     title:'Owen’s Preface',
     prose:true,
     lines:[
-      "This book is [[not about heroes|heroes]]. English Poetry is [[not yet fit to speak of them|fit]].",
-      "",
-      "Nor is it about deeds, or lands, nor anything about [[glory, honour, might, majesty, dominion, or power|glory]], [[except War|except]].",
-      "",
-      "[[Above all I am not concerned with Poetry.|poetry]]",
-      "",
-      "[[My subject is War, and the pity of War.|subject]]",
-      "",
+      "This book is [[not about heroes|heroes]]. English Poetry is [[not yet fit to speak of them|fit]]. Nor is it about deeds or lands, nor anything about [[glory, honour, dominion or power|glory]],",
+      "[[except War|except]].",
+      "[[Above all, this book is not concerned with Poetry.|poetry]]",
+      "[[The subject of it is War, and the pity of War.|subject]]",
       "[[The Poetry is in the pity.|pity]]",
+      "Yet these [[elegies|elegies]] are [[not to this generation|generation]],",
+      "[[This is in no sense consolatory.|consolatory]]",
       "",
-      "Yet these [[elegies|elegies]] are to this generation [[in no sense consolatory|consolatory]]. [[They may be to the next.|next]] [[All a poet can do today is warn.|warn]] [[That is why the true Poets must be truthful.|truthful]]",
+      "[[They may be to the next.|next]]",
+      "[[All the poet can do to-day is to warn.|warn]]",
+      "[[That is why the true Poets must be truthful.|truthful]]",
+      "If I thought [[the letter of this book|letter]] would last, I might have used proper names; but if the spirit of it [[survives Prussia|prussia]],—my ambition and those names will be content; for they will have achieved themselves [[fresher fields than Flanders|flanders]].",
       "",
-      "(If I thought [[the letter of this book|letter]] would last, I might have used proper names; but if the spirit of it survives – [[survives Prussia|prussia]] – my ambition and those names will have achieved [[fresher fields than Flanders|flanders]]…)"
+      "Note.—This Preface was found, in an unfinished condition, among Wilfred Owen’s papers."
     ],
     notes:{
       heroes:['A plain statement','Newspapers and recruiting poems called every soldier a hero. Owen begins by refusing that word. Owen means: do not read these poems as stories of brave deeds.'],
       fit:['Word choice','“Fit” here means good enough. Owen does not say that the soldiers are not brave. He says that English poetry is not yet good enough to speak about them. Owen means: the soldiers deserve better than the grand, false poems that had been written about them.'],
-      glory:['A list','Six grand words in a row. “Might” means strength. “Majesty” means the greatness of a king or queen. “Dominion” means rule over other lands. These are words from hymns, prayers and speeches. Owen means: his poems will not use the war to make anyone look grand.'],
+      glory:['A list','Four grand words in a row. “Dominion” means rule over other lands. These are words from hymns, prayers and speeches. Owen means: his poems will not use the war to make anyone look grand.'],
       except:['Two words that turn the sentence','After a list of things the book is not about, Owen names the one thing it is about. Owen means: the only subject is war itself, shown as it is.'],
-      poetry:['A surprising statement','A poet says he is not concerned with poetry. “Concerned with” means interested in. He does not mean that the poems are careless. Owen means: fine writing is not the aim. Telling the truth about the war is the aim.'],
+      poetry:['A surprising statement','A poet says that his book is not concerned with poetry. “Concerned with” means interested in. He does not mean that the poems are careless. Owen means: fine writing is not the aim. Telling the truth about the war is the aim.'],
       subject:['Repetition','“War” appears twice, with a capital letter each time. “Pity” here means deep sorrow for people who suffer. It does not mean looking down on them. Owen means: he is writing about the war, and about the sorrow we should feel for the men in it.'],
       pity:['The most quoted sentence','Six words. Owen says where the poetry in his poems comes from. It does not come from beautiful words. Owen means: what makes these poems matter is the sorrow they make the reader feel for the soldiers.'],
       elegies:['A term to know','An elegy is a poem that mourns someone who has died. Owen calls his own poems elegies. Owen means: these poems are written to mourn the dead soldiers.'],
-      consolatory:['Word choice','“Consolatory” means comforting. “This generation” means the people who were alive during the war. Owen means: these poems will not comfort the people who lived through the war, and they are not written to comfort them.'],
+      generation:['Who the poems are for','“This generation” means the people who were alive during the war. Owen means: these poems are not written to please the people of his own time.'],
+      consolatory:['Word choice','“Consolatory” means comforting. “In no sense” means not in any way. Owen means: this book will not comfort the people who lived through the war, and it is not written to comfort them.'],
       next:['A short sentence','“The next” means the next generation: people born later, which includes you. Owen means: people born after the war may find comfort in the poems, even though the people who lived through it cannot.'],
-      warn:['A poet’s job','Owen says there is one thing a poet can do in 1918. A poet cannot stop the war. A poet can show what war does to people, so that others know. Owen means: every poem in the book is a warning.'],
+      warn:['A poet’s job','“To-day” is an old spelling of “today”. Owen says there is one thing the poet can do in 1918. A poet cannot stop the war. A poet can show what war does to people, so that others know. Owen means: every poem in the book is a warning.'],
       truthful:['Cause and effect','“That is why” joins this sentence to the one before it. A warning is only useful if it is true. Owen means: he must show the war exactly as it was, including the ugliest parts.'],
       letter:['Letter and spirit','The “letter” of a book is its exact words. The “spirit” is its meaning. “Proper names” are the real names of people and places. Owen means: the meaning of the book matters more than its exact details.'],
       prussia:['Background','Prussia was the most powerful state in Germany, and its army led the German side in the war. Owen means: he hopes the meaning of his book will last longer than the war does.'],
-      flanders:['Background','Flanders is the region of Belgium and northern France where much of the fighting took place. Owen means: if the meaning of the book lasts, the men he writes about will be remembered far beyond the battlefield.']
+      flanders:['Background','Flanders is the region of Belgium and northern France where much of the fighting took place. “Content” means satisfied. Owen means: if the meaning of the book lasts, he will be satisfied, and the men he writes about will be remembered far beyond the battlefield.']
     },
-    edition:'This is the wording in modern editions. The first printed edition of 1920 words several sentences differently. Learn the wording in your school copy.'
+    edition:'This is the wording on your school handout. It follows the first printed edition of 1920. Modern editions, including Jon Stallworthy’s, word several sentences differently. For example, they print “My subject is War”. Learn the wording on the handout.'
   },
   sections:[
     {h:'When Owen wrote the Preface', p:['Owen drafted the Preface in 1918 for a book of poems that he did not live to see. He was killed in action on 4 November 1918, one week before the war ended. His poems were first published as a book in 1920.',
-      'The Preface was never finished. That is why the last sentence is in brackets and trails off.'],
-      note:'Editors had to work from Owen’s rough handwritten draft, so different editions print the Preface with small differences.'}
+      'The Preface was never finished. The note at the end of the handout says that it was found, unfinished, among Owen’s papers after he died.'],
+      note:'Editors had to work from Owen’s rough handwritten draft, so different editions print the Preface with small differences. Your handout follows the edition of 1920.'}
   ],
   meansHead:{h:'What the Preface says and what Owen means', intro:'Owen wrote the Preface to tell readers how to read the poems. These five ideas are the ones to learn.', cols:['The Preface says','Owen means']},
   means:[
     ['“This book is not about heroes.”','Do not look for brave deeds in these poems. Look at what the war did to ordinary men.'],
-    ['“Above all I am not concerned with Poetry.”','The truth matters more than fine writing.'],
-    ['“My subject is War, and the pity of War. The Poetry is in the pity.”','The poems are about the suffering of soldiers. They are written to make the reader feel sorrow for those soldiers.'],
-    ['“these elegies are to this generation in no sense consolatory”','The poems mourn the dead. They do not try to make anyone feel better.'],
-    ['“All a poet can do today is warn. That is why the true Poets must be truthful.”','Every poem is a warning to people who have not seen war. A warning has to be true.']
+    ['“Above all, this book is not concerned with Poetry.”','The truth matters more than fine writing.'],
+    ['“The subject of it is War, and the pity of War. The Poetry is in the pity.”','The poems are about the suffering of soldiers. They are written to make the reader feel sorrow for those soldiers.'],
+    ['“Yet these elegies are not to this generation, This is in no sense consolatory.”','The poems mourn the dead. They do not try to make anyone feel better.'],
+    ['“All the poet can do to-day is to warn. That is why the true Poets must be truthful.”','Every poem is a warning to people who have not seen war. A warning has to be true.']
   ],
   tables:[
     {h:'Using the Preface in an essay', intro:'A phrase from the Preface can support a point about any of the seven poems. Here is one match for each poem.', cols:['From the Preface','Poem','How the poem shows it'],
@@ -73,7 +75,7 @@ LESSONS['1.2'] = {
       ['“the pity of War”','Futility','The speaker grieves over one dead soldier and asks why life was made at all.'],
       ['“these elegies”','Anthem for Doomed Youth','The poem asks what funeral the dead soldiers receive. The answer is the noise of the guns.'],
       ['“in no sense consolatory”','Mental Cases','The poem shows soldiers whose minds have been injured, and it blames “us”. It offers no comfort.'],
-      ['“All a poet can do today is warn”','The Sentry','Owen describes a blinded sentry exactly as he saw him, so that readers know what a shell does to a man.'],
+      ['“All the poet can do to-day is to warn”','The Sentry','Owen describes a blinded sentry exactly as he saw him, so that readers know what a shell does to a man.'],
       ['“the true Poets must be truthful”','The Send-Off','The soldiers are sent away in secret. Owen tells the truth that only a few of them will come back.']
      ]}
   ],
@@ -89,7 +91,7 @@ LESSONS['1.2'] = {
       {page:'p. xxii', find:'‘Uriconium/An Ode’ (p. 3) is', say:'At the age of twenty, before the war, Owen wrote a poem about the ruins of a Roman city near Shrewsbury. The city had been destroyed and its people killed. Stallworthy treats this as the first of Owen’s war poems.', use:'Any of the seven poems. It shows that Owen thought about the victims of war before he became a soldier.'},
       {page:'p. xxiii', find:'Owen’s compassionate awareness of', say:'Owen pays close attention to the bodies of victims. In the Roman ruins he notices finger-marks left in plaster, and a bracelet that once sat on a warm arm. Stallworthy says this attention to bodies becomes a main feature of the war poems.', use:'Disabled (the lost limbs), Dulce et Decorum Est (the eyes and the lungs) and The Sentry (the eyes).'},
       {page:'p. xxiii', find:'and other of his early writings', say:'Owen’s early writing shows that he was drawn to gloom, darkness and hidden things, years before he saw a trench.', use:'The Sentry, where the lights go out, and Futility, where the sun cannot wake the dead man.'},
-      {page:'p. xxiv', find:'His prophecy would be fulfilled', say:'In an early poem Owen imagined the poet as a lonely meteor that warns the earth. Stallworthy says this came true in 1918, when Owen wrote in the Preface that all a poet can do is warn.', more:'A meteor is a rock from space that burns brightly as it falls through the sky.', use:'Dulce et Decorum Est, which ends with a direct warning to the reader.'},
+      {page:'p. xxiv', find:'His prophecy would be fulfilled', say:'In an early poem Owen imagined the poet as a lonely meteor that warns the earth. Stallworthy says this came true in 1918, when Owen wrote in the Preface that the poet’s job is to warn.', more:'A meteor is a rock from space that burns brightly as it falls through the sky.', use:'Dulce et Decorum Est, which ends with a direct warning to the reader.'},
       {page:'p. xxv', find:'A month later, he had rediscovered', say:'Early in the war Owen visited a hospital for wounded soldiers and described their injuries in a letter to his brother Harold. Stallworthy says the visit brought back the compassion Owen had felt for the poor of Dunsden.', use:'Disabled, which is about a wounded man after the fighting is over.'},
       {page:'p. xxv', find:'His delayed decision indicates', say:'Owen took more than a year to join the army. He enlisted on 21 October 1915. Stallworthy says the delay shows that he was reluctant to go to war, and that his letters from this time never say that fighting is wrong in principle.', more:'Owen told his mother what would hold him together on a battlefield: “The sense that I was perpetuating the language in which Keats and the rest of them wrote!” To perpetuate something is to keep it going. John Keats was the first poet Owen hero-worshipped.', use:'Any essay that describes Owen as against the war. He hated what the war did to men, and he still chose to serve.'},
       {page:'p. xxvi', find:'This experience, compounded with', say:'In March 1917 Owen fell through a shell-hole into a cellar and was trapped there for three days. Stallworthy says this, and the sickness that followed, fed the dark images of an underworld in many of the later poems.', use:'The Sentry.'},
@@ -115,11 +117,11 @@ LESSONS['1.2'] = {
   quotes:[
     {id:'p1', t:'This book is not about heroes.', ref:'Owen, Preface, 1918', cue:'The first sentence of the Preface. Owen says what the book is not about.', tech:'Plain statement', means:'Do not read the poems as stories of brave deeds.', gaps:['heroes','book']},
     {id:'p2', t:'English Poetry is not yet fit to speak of them.', ref:'Owen, Preface, 1918', cue:'The second sentence of the Preface. Owen says that English poetry is not good enough to talk about heroes.', tech:'Word choice', means:'The soldiers deserve better than the grand, false poems written about them.', gaps:['fit','speak','Poetry']},
-    {id:'p3', t:'Above all I am not concerned with Poetry.', ref:'Owen, Preface, 1918', cue:'A poet says that poetry is not what he cares about most.', tech:'Surprising statement', means:'Telling the truth about the war matters more than fine writing.', gaps:['concerned','Above','Poetry']},
-    {id:'p4', t:'My subject is War, and the pity of War.', ref:'Owen, Preface, 1918', cue:'Owen names his subject. One word appears twice.', tech:'Repetition', means:'He writes about the war and about the sorrow we should feel for the men in it.', gaps:['subject','pity']},
+    {id:'p3', t:'Above all, this book is not concerned with Poetry.', ref:'Owen, Preface, 1918', cue:'A poet says that poetry is not what his book cares about most.', tech:'Surprising statement', means:'Telling the truth about the war matters more than fine writing.', gaps:['concerned','Above','Poetry']},
+    {id:'p4', t:'The subject of it is War, and the pity of War.', ref:'Owen, Preface, 1918', cue:'Owen names his subject. One word appears twice.', tech:'Repetition', means:'He writes about the war and about the sorrow we should feel for the men in it.', gaps:['subject','pity']},
     {id:'p5', t:'The Poetry is in the pity.', ref:'Owen, Preface, 1918', cue:'Six words. Owen says where the poetry in his poems comes from.', tech:'Short sentence', means:'The poems matter because of the sorrow they make the reader feel for the soldiers.', gaps:['Poetry','pity']},
-    {id:'p6', t:'these elegies are to this generation in no sense consolatory', ref:'Owen, Preface, 1918', cue:'Owen says what kind of poems these are, and that they will not comfort the people alive during the war.', tech:'Word choice', means:'The poems mourn the dead. They are not written to comfort anyone.', gaps:['elegies','generation','consolatory']},
-    {id:'p7', t:'All a poet can do today is warn.', ref:'Owen, Preface, 1918', cue:'Owen says what the one job of a poet is.', tech:'Short sentence', means:'Every poem in the book is a warning.', gaps:['poet','warn','today']},
+    {id:'p6', t:'This is in no sense consolatory.', ref:'Owen, Preface, 1918', cue:'Owen says that the book will not comfort anyone. The last word means comforting.', tech:'Word choice', means:'The poems mourn the dead. They are not written to comfort anyone.', gaps:['sense','consolatory']},
+    {id:'p7', t:'All the poet can do to-day is to warn.', ref:'Owen, Preface, 1918', cue:'Owen says what the one job of the poet is.', tech:'Short sentence', means:'Every poem in the book is a warning.', gaps:['poet','warn','to-day']},
     {id:'p8', t:'That is why the true Poets must be truthful.', ref:'Owen, Preface, 1918', cue:'The sentence that follows the one about warning. It begins “That is why”.', tech:'Cause and effect', means:'A warning only works if it is true, so Owen must show the war as it was.', gaps:['true','truthful','Poets']},
     {id:'l1', t:'Those fifty hours were the agony of my happy life.', ref:'Owen, letter to his mother, January 1917', cue:'Owen’s sentence to his mother about the hours he spent in the flooded dug-out.', tech:'Contrast', means:'The dug-out was the worst suffering Owen had known. This is the event behind The Sentry.', gaps:['fifty','agony','happy']},
     {id:'l2', t:'one lad was blown down and, I am afraid, blinded', ref:'Owen, letter to his mother, January 1917', cue:'Owen tells his mother what happened to one of his sentries.', tech:'Plain statement', means:'The blinded sentry in The Sentry was a real man under Owen’s command.', gaps:['lad','blown','blinded']},
@@ -128,12 +130,12 @@ LESSONS['1.2'] = {
   ],
   questions:[
     ['What is a preface?','A short note at the front of a book in which the writer says what the book is for',['A poem that mourns someone who has died','The last chapter of a book','A list of the poems in a book'],'Owen drafted his Preface in 1918 for a book of his war poems.'],
-    ['What does Owen say his subject is?','War, and the pity of War',['Heroes and their brave deeds','Glory, honour and power','Poetry and how to write it'],'The Preface says: “My subject is War, and the pity of War.” The first sentences list what the book is not about.'],
+    ['What does Owen say his subject is?','War, and the pity of War',['Heroes and their brave deeds','Glory, honour and power','Poetry and how to write it'],'The Preface says: “The subject of it is War, and the pity of War.” The first sentences list what the book is not about.'],
     ['What does “pity” mean in the Preface?','Deep sorrow for people who suffer',['Looking down on someone who is weak','Feeling sorry for yourself','Anger at the enemy'],'Owen wants the reader to feel sorrow for the soldiers. He writes: “The Poetry is in the pity.”'],
-    ['Owen writes “Above all I am not concerned with Poetry.” What does he mean?','Telling the truth about the war matters more to him than fine writing.',['He has given up writing poems.','He thinks his poems are badly written.','He wants people to read his letters and not his poems.'],'The poems are carefully made. Owen is saying what they are for: the truth about the war comes first.'],
+    ['Owen writes “Above all, this book is not concerned with Poetry.” What does he mean?','Telling the truth about the war matters more to him than fine writing.',['He has given up writing poems.','He thinks his poems are badly written.','He wants people to read his letters and not his poems.'],'The poems are carefully made. Owen is saying what they are for: the truth about the war comes first.'],
     ['What is an elegy?','A poem that mourns someone who has died',['A poem of fourteen lines','A poem that praises a hero','A poem that tells a funny story'],'Owen calls his own poems “these elegies”. They are written to mourn the dead soldiers.'],
-    ['“Consolatory” means comforting. What does the Preface say about comfort?','The poems are not written to comfort the people who lived through the war.',['The poems are written to comfort grieving families.','The poems will comfort soldiers in the trenches.','No poem can ever comfort anyone.'],'Owen writes that the elegies are “to this generation in no sense consolatory”. He adds that they may comfort the next generation.'],
-    ['According to the Preface, what is the one thing a poet can do?','Warn',['Stop the war','Comfort the dead','Praise the brave'],'“All a poet can do today is warn.” Each poem shows what war does, so that people who have not seen it will know.'],
+    ['“Consolatory” means comforting. What does the Preface say about comfort?','The poems are not written to comfort the people who lived through the war.',['The poems are written to comfort grieving families.','The poems will comfort soldiers in the trenches.','No poem can ever comfort anyone.'],'Owen writes: “This is in no sense consolatory.” He adds that the poems may comfort the next generation.'],
+    ['According to the Preface, what is the one thing a poet can do?','Warn',['Stop the war','Comfort the dead','Praise the brave'],'“All the poet can do to-day is to warn.” Each poem shows what war does, so that people who have not seen it will know.'],
     ['Why must “the true Poets” be truthful?','Because a warning is only useful if it is true.',['Because the army ordered poets to report facts.','Because truthful poems sold more copies.','Because all of Owen’s readers had seen the war themselves.'],'The sentence begins “That is why”, which joins it to the sentence about warning.'],
     ['Why was the Preface never finished?','Owen was killed on 4 November 1918, before the book was printed.',['Owen lost interest in the book.','The army banned the book.','Owen decided the book did not need a preface.'],'He was killed one week before the war ended. The poems were first published as a book in 1920.'],
     ['Stallworthy begins his introduction by comparing Owen to Orpheus. Who was Orpheus?','A poet and singer in Greek myth who went down to the land of the dead and came back',['A Roman general who died in battle','The Greek god of war','A king in a play by Shakespeare'],'Stallworthy pictures the modern poet in a steel helmet, going down into the mud of the Western Front.'],

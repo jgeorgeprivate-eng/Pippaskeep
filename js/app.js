@@ -121,6 +121,10 @@ function aloudHTML(L){
     return '<div class="al"><span class="at">'+t+'</span>'+(ui.aloud ? '<span class="am">'+l[1]+'</span>' : '')+'</div>'; }).join('')+'</div>'+
     '<div><button class="btn plain" data-act="aloud">'+(ui.aloud ? 'Hide the meanings' : 'Show what each line means')+'</button></div>'+(A.tip ? '<p class="small">'+A.tip+'</p>' : '');
 }
+function stepsCard(L){ return '<div class="card"><h3>'+L.steps.h+'</h3><div class="slider"><label for="step">Step <span id="steplab">'+(ui.step+1)+' of '+L.steps.items.length+'</span></label><input type="range" id="step" min="0" max="'+(L.steps.items.length-1)+'" step="1" value="'+ui.step+'"></div>'+
+    '<div class="row"><button class="btn plain" data-act="stepPrev">Back</button><button class="btn plain" data-act="stepNext">Next</button><button class="btn plain" data-act="playSteps" id="playsteps">Play</button></div><div id="stepinfo" class="lesson pinfo">'+stepsInfo(L)+'</div></div>'; }
+function tableHTML(t){ return '<h2>'+t.h+'</h2>'+(t.intro ? '<p>'+t.intro+'</p>' : '')+'<div class="tablewrap"><table class="t"><tr>'+t.cols.map(function(c){ return '<th>'+c+'</th>'; }).join('')+'</tr>'+
+  t.rows.map(function(r){ return '<tr>'+r.map(function(c){ return '<td>'+c+'</td>'; }).join('')+'</tr>'; }).join('')+'</table></div>'; }
 function vLesson(){
   var L = LESSONS[cur], st = lessonState(cur), pi = partOf(cur), s, hasQ = L.quotes && L.quotes.length, mh = L.meansH || [];
   s = '<div><button class="btn plain" data-act="go:learn">Back to Learn</button></div><h1>'+L.title+'</h1><div class="lesson">'+(L.portrait ? '<figure class="portrait"><img src="'+L.portrait.src+'" alt="'+L.portrait.alt+'" width="333" height="518"><figcaption>'+L.portrait.cap+'</figcaption></figure>' : '')+L.intro.map(function(p){ return '<p>'+p+'</p>'; }).join('');
@@ -134,8 +138,8 @@ function vLesson(){
     means:function(){ var h = L.meansHead || {};
       return '<h2>'+(h.h || 'What the poem says and what Owen means')+'</h2><p>'+(h.intro || 'Owen does not always state his meaning directly. Here it is stated directly. These five ideas are the ones to learn.')+'</p>'+
         '<div class="tablewrap"><table class="t"><tr><th>'+(h.cols ? h.cols[0] : 'The poem says')+'</th><th>'+(h.cols ? h.cols[1] : 'Owen means')+'</th></tr>'+L.means.map(function(m){ return '<tr><td>'+m[0]+'</td><td><b>'+m[1]+'</b></td></tr>'; }).join('')+'</table></div>'; },
-    tables:function(){ return L.tables.map(function(t){ return '<h2>'+t.h+'</h2>'+(t.intro ? '<p>'+t.intro+'</p>' : '')+'<div class="tablewrap"><table class="t"><tr>'+t.cols.map(function(c){ return '<th>'+c+'</th>'; }).join('')+'</tr>'+
-      t.rows.map(function(r){ return '<tr>'+r.map(function(c){ return '<td>'+c+'</td>'; }).join('')+'</tr>'; }).join('')+'</table></div>'; }).join(''); },
+    tables:function(){ return L.tables.map(tableHTML).join(''); },
+    steps:function(){ return stepsCard(L); },
     points:function(){ var P = L.points;
       return '<h2>'+P.h+'</h2>'+P.intro.map(function(p){ return '<p>'+p+'</p>'; }).join('')+'<div class="qb">'+P.items.map(function(it, n){
         return '<div class="pt"><div class="meta"><span class="chip blue">'+it.page+'</span><span>Point '+(n+1)+' of '+P.items.length+'</span></div><p><b>Stallworthy says:</b> '+it.say+'</p>'+(it.more ? '<p>'+it.more+'</p>' : '')+
@@ -143,14 +147,13 @@ function vLesson(){
     remember:function(){ return '<p class="note"><b>Remember:</b> '+L.remember+'</p>'; },
     quotes:function(){ return '<h2>Quote bank</h2><p>'+(L.quotesIntro || 'These are the lines to know by heart. The three dots show how well you know each one.')+'</p><div class="qb">'+L.quotes.map(quoteCard).join('')+'</div>'; }
   };
-    L.layout.forEach(function(k){ s += parts[k](); });
+    L.layout.forEach(function(k){ var m = /^table(\d)$/.exec(k); s += m ? tableHTML(L.tables[+m[1]]) : parts[k](); });
     return s+finishCard(L, st, hasQ)+'</div>';
   }
   if(L.poem) s += '<div class="card"><div class="row between"><h3>'+(L.poem.h || 'The poem')+'</h3><span class="small muted">Tap an underlined phrase</span></div><div class="poem'+(L.poem.prose ? ' prose' : '')+'" id="poem">'+poemHTML(L)+'</div>'+(L.poem.edition ? '<p class="small muted">'+L.poem.edition+'</p>' : '')+'</div>';
   if(L.stages) s += '<div class="card"><h3>The four stages of the poem</h3><div class="slider"><label for="stage">Stage <span id="stagelab">'+(ui.stage ? ui.stage+' of 4' : 'Whole poem')+'</span></label><input type="range" id="stage" min="0" max="4" step="1" value="'+ui.stage+'"></div>'+
     '<div><button class="btn plain" data-act="playStages" id="playbtn">Play the four stages</button></div><div id="stageinfo" class="lesson">'+stageHTMLInfo(L)+'</div></div>';
-  if(L.steps) s += '<div class="card"><h3>'+L.steps.h+'</h3><div class="slider"><label for="step">Step <span id="steplab">'+(ui.step+1)+' of '+L.steps.items.length+'</span></label><input type="range" id="step" min="0" max="'+(L.steps.items.length-1)+'" step="1" value="'+ui.step+'"></div>'+
-    '<div class="row"><button class="btn plain" data-act="stepPrev">Back</button><button class="btn plain" data-act="stepNext">Next</button><button class="btn plain" data-act="playSteps" id="playsteps">Play</button></div><div id="stepinfo" class="lesson pinfo">'+stepsInfo(L)+'</div></div>';
+  if(L.steps) s += stepsCard(L);
   if(L.people) s += '<div class="card"><h3>'+(L.peopleH || 'Who is who')+'</h3><div id="people">'+peopleHTML(L)+'</div></div>';
   if(L.aloud) s += '<div class="card"><h3>Read it aloud: '+L.aloud.title+'</h3><div id="aloud">'+aloudHTML(L)+'</div></div>';
   (L.sections || []).forEach(function(sec){ s += '<h2>'+sec.h+'</h2>'+sec.p.map(function(p){ return '<p>'+p+'</p>'; }).join('')+(sec.note ? '<p class="note">'+sec.note+'</p>' : ''); });
@@ -271,7 +274,7 @@ function vRecall(){
 
 /* ---------- section tests ---------- */
 /* What a test question is about. A test mixes questions from every lesson of a part, so each one says where it comes from. */
-var CTX = {'1.1':'Wilfred Owen’s life and the First World War', '1.2':'Owen’s Preface and Stallworthy’s introduction', '1.3':'the techniques Owen uses in his poems', '1.11':'themes across Owen’s poems',
+var CTX = {'1.1':'Wilfred Owen’s life and the First World War', '1.2':'Owen’s Preface and Stallworthy’s introduction', '1.3':'the techniques Owen uses in his poems', '1.11':'themes across Owen’s poems', '1.12':'Owen’s letters home to his mother',
   '2.1':'the whole story of The Great Gatsby', '2.2':'the characters of The Great Gatsby', '2.3':'Fitzgerald and America in the 1920s', '2.4':'Nick Carraway, the narrator of The Great Gatsby', '2.11':'Gatsby and Daisy', '2.12':'Tom, Myrtle, George and Jordan in The Great Gatsby', '2.13':'symbols and settings in The Great Gatsby', '2.14':'the themes of The Great Gatsby',
   '3.1':'the whole story of Macbeth', '3.2':'the characters of Macbeth', '3.3':'Shakespeare, King James and the world of Macbeth', '3.4':'Shakespeare’s language in Macbeth', '3.11':'the character of Macbeth', '3.12':'the character of Lady Macbeth', '3.13':'Banquo, Macduff, Duncan, Malcolm and the witches in Macbeth', '3.14':'themes and imagery in Macbeth'};
 function contextFor(id){ if(CTX[id]) return CTX[id]; var L = LESSONS[id], pi = partOf(id); if(!L) return PARTS[pi].text; return pi === 0 ? 'the poem '+L.title : L.title+' of '+PARTS[pi].text; }

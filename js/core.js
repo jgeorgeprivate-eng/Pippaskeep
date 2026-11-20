@@ -18,7 +18,7 @@ function plural(n, w){ return n+' '+w+(n === 1 ? '' : 's'); }
 
 /* ---------- marking typed quotes ---------- */
 // Words only: capitals, punctuation and the style of apostrophes and dashes are ignored.
-function words(s){ return String(s).toLowerCase().replace(/[’‘'`]/g,'').replace(/[—–-]/g,' ').replace(/[^a-z0-9àâçéèêëîïôûùüÿœæ ]/g,' ').split(/\s+/).filter(function(w){ return w; }); }
+function words(s){ return String(s).toLowerCase().replace(/\bto[- ]day\b/g,'today').replace(/[’‘'`]/g,'').replace(/[—–-]/g,' ').replace(/[^a-z0-9àâçéèêëîïôûùüÿœæ ]/g,' ').split(/\s+/).filter(function(w){ return w; }); }
 function dist(a,b){ // edit distance between two words
   var m = a.length, n = b.length, d = [], i, j; if(Math.abs(m-n) > 2) return 3;
   for(i = 0; i <= m; i++){ d[i] = [i]; } for(j = 0; j <= n; j++) d[0][j] = j;
