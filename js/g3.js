@@ -37,10 +37,10 @@ LESSONS['2.8'] = {
     ['Who was Gatsby before he was Gatsby?','James Gatz, the son of poor farmers in North Dakota',['Dan Cody, a rich miner','An Oxford professor','Tom Buchanan’s cousin'],'He changed his name at seventeen.'],
     ['What did Gatsby learn from Dan Cody?','How the rich live, and not to drink',['How to fix baseball games','How to sell bonds','How to play polo'],'He worked for Cody for five years.'],
     ['What does “sprang from his Platonic conception of himself” mean?','He imagined a perfect version of himself and became it',['He studied philosophy at Oxford','He was born in Greece','He copied Dan Cody exactly'],'A Platonic conception is a perfect idea of something.'],
-    ['What does the dinner invitation show?','Old money does not accept Gatsby, and he cannot see it',['Tom wants to be Gatsby’s friend','Gatsby dislikes horses','Daisy is jealous'],'They leave before he returns with his car.'],
+    ['In Chapter 6 the riders invite Gatsby to dinner and leave without him. What does this show?','Old money does not accept Gatsby, and he cannot see it',['Tom wants to be Gatsby’s friend','Gatsby dislikes horses','Daisy is jealous'],'They leave before he returns with his car.'],
     ['How does Daisy react to Gatsby’s party?','She dislikes it',['She wants to move to West Egg','She dances all night with Tom','She falls asleep'],'West Egg offends her East Egg taste. Gatsby stops giving parties.'],
     ['What exactly does Gatsby want Daisy to do?','Tell Tom she never loved him, then marry Gatsby as if five years had not passed',['Give him money','Run away without telling Tom','Become friends with Nick'],'He wants the marriage wiped out, and that is more than she can give.'],
-    ['What does Nick tell Gatsby?','That he cannot repeat the past',['That Daisy hates him','That Tom has a gun','That he should give more parties'],'Gatsby answers, “Why of course you can!”'],
+    ['What does Nick tell Gatsby about the past in Chapter 6?','That he cannot repeat the past',['That Daisy hates him','That Tom has a gun','That he should give more parties'],'Gatsby answers, “Why of course you can!”'],
     ['Why can Gatsby’s dream not come true?','It is a dream of the past, and Daisy has lived five years since then',['He has too little money','Daisy has left the country','Nick will not help him'],'The past cannot be recovered.']]
 };
 
@@ -84,8 +84,8 @@ LESSONS['2.9'] = {
     ['What is a climax?','The point of greatest tension, where the main conflict is decided',['The first chapter of a novel','A minor character','A description of weather'],'Chapter 7 decides the contest between Gatsby and Tom.'],
     ['How does Tom realise Daisy loves Gatsby?','From the way she tells Gatsby he always looks so cool',['Jordan tells him','He reads a letter','Nick confesses'],'Her voice gives her away.'],
     ['What does Gatsby demand that Daisy say?','That she never loved Tom',['That she will leave America','That she hates her daughter','That she is poor'],'His dream needs the last five years not to count.'],
-    ['Why can Daisy not say it?','It is not true. She did love Tom',['Tom threatens her','She has forgotten Gatsby','Jordan stops her'],'“I did love him once—but I loved you too.”'],
-    ['How does Tom defeat Gatsby?','He exposes him as a criminal with no background',['He fights him','He pays him to leave','He calls the police'],'Daisy will not give up the safety of her class.'],
+    ['In the hotel, why can Daisy not say that she never loved Tom?','It is not true. She did love Tom',['Tom threatens her','She has forgotten Gatsby','Jordan stops her'],'“I did love him once—but I loved you too.”'],
+    ['How does Tom defeat Gatsby in the hotel?','He exposes him as a criminal with no background',['He fights him','He pays him to leave','He calls the police'],'Daisy will not give up the safety of her class.'],
     ['Why does Myrtle run towards the yellow car?','She saw Tom driving it earlier and thinks he is in it',['She wants to steal it','She recognises Gatsby','She is chasing George'],'The cars were swapped on the way into town.'],
     ['Who was driving when Myrtle was killed?','Daisy',['Gatsby','Tom','Nick'],'Gatsby tells Nick he will say he was driving.'],
     ['What does Nick see through the kitchen window?','Tom and Daisy sitting together, calmly making plans',['Daisy packing to leave','Tom hitting Daisy','Daisy crying alone'],'They have closed ranks. Gatsby is outside, “watching over nothing”.']]
@@ -134,7 +134,7 @@ LESSONS['2.10'] = {
     ['What is Gatsby waiting for when he dies?','A telephone call from Daisy',['A visit from Wolfshiem','A letter from his father','The police'],'The call never comes.'],
     ['What does George believe about the eyes on the advertisement?','They are the eyes of God, who sees everything',['They belong to Gatsby','They are a warning from Tom','They are a street light'],'His neighbour reminds him that it is an advertisement.'],
     ['Who comes to Gatsby’s funeral?','Nick, Gatsby’s father, a few servants and Owl Eyes',['Hundreds of party guests','Daisy and Tom','Wolfshiem and Jordan'],'The people who enjoyed his parties stay away.'],
-    ['What does the boy’s schedule show?','He believed in rising through hard work and self-improvement',['He was lazy','He planned to become a criminal','He hated his father'],'It is the American Dream in its simple form.'],
+    ['What does the schedule that Gatsby wrote as a boy show?','He believed in rising through hard work and self-improvement',['He was lazy','He planned to become a criminal','He hated his father'],'It is the American Dream in its simple form.'],
     ['What does Nick mean by calling Tom and Daisy “careless people”?','They damage others and leave without taking responsibility',['They forget their keys','They do not care about money','They dress untidily'],'They “smashed up things and creatures” and went back into their money.'],
-    ['What does the last line mean?','People strive towards the future and are always pulled back by the past',['Gatsby liked rowing','Nick is going on a sea voyage','The past is easy to repeat'],'Gatsby’s story becomes a statement about everyone.']]
+    ['What does the last line of the novel mean?','People strive towards the future and are always pulled back by the past',['Gatsby liked rowing','Nick is going on a sea voyage','The past is easy to repeat'],'Gatsby’s story becomes a statement about everyone.']]
 };

@@ -1,9 +1,9 @@
 "use strict";
 /* Pippa's Keep: state, small helpers and the marking of typed quotes. */
 var KEY = 'pippas-keep-v1';
-function fresh(){ return {coins:0, owned:{camp:1}, lessons:{}, quotes:{}, tests:{}, keys:0, maze:null, mazeBest:{}}; }
+function fresh(){ return {v:2, coins:0, owned:{camp:1}, lessons:{}, quotes:{}, tests:{}, keys:0, maze:null, mazeBest:{}}; }
 var state = fresh();
-function load(){ try{ var s = JSON.parse(localStorage.getItem(KEY)); if(s && typeof s === 'object'){ state = Object.assign(fresh(), s); state.owned.camp = 1; if(state.lessons['1.3'] && !state.lessons['1.4']){ state.lessons['1.4'] = state.lessons['1.3']; delete state.lessons['1.3']; } } }catch(e){} }
+function load(){ try{ var s = JSON.parse(localStorage.getItem(KEY)); if(s && typeof s === 'object'){ state = Object.assign(fresh(), s); state.owned.camp = 1; if(state.lessons['1.3'] && !state.lessons['1.4']){ state.lessons['1.4'] = state.lessons['1.3']; delete state.lessons['1.3']; } if(!s.v || s.v < 2){ delete state.lessons['1.8']; delete state.lessons['1.10']; state.v = 2; } } }catch(e){} }
 function save(){ try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){} }
 function lessonState(id){ return state.lessons[id] || (state.lessons[id] = {done:false, quizzes:0, best:0}); }
 function quoteState(id){ return state.quotes[id] || (state.quotes[id] = {lvl:0, known:false, tries:0}); }

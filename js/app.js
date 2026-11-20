@@ -9,6 +9,17 @@ var RAVEN = '<svg viewBox="0 0 40 40" width="40" height="40" aria-hidden="true" 
 /* ---------- lookups ---------- */
 function lessonId(pi, li){ return (pi+1)+'.'+(li+1); }
 function orderedIds(){ var ids = []; PARTS.forEach(function(p,pi){ p.lessons.forEach(function(t,li){ ids.push(lessonId(pi,li)); }); }); return ids; }
+function nextTarget(id){ var k = storyFor(id); if(k) return {act:'story:'+k, label:STORIES[k].title}; if(LESSONS[id]) return {act:'lesson:'+id, label:'lesson '+id+', '+LESSONS[id].title}; return null; }
+/* Where "Next" goes after the quiz for lesson id: the next lesson or story in the same part, then that part's test if it is not passed, then the next part. */
+function nextAfter(id){
+  var ids = orderedIds(), i = ids.indexOf(id), pi = partOf(id), j, t;
+  if(i < 0) return null;
+  for(j = i+1; j < ids.length && partOf(ids[j]) === pi; j++){ t = nextTarget(ids[j]); if(t) return t; }
+  if(!testPassed(pi+1) && testReady(pi)) return {act:'test:'+pi, label:'the '+PARTS[pi].name.replace(/^The /,'')+' test'};
+  for(; j < ids.length; j++){ t = nextTarget(ids[j]); if(t) return t; }
+  return null;
+}
+function nextPart(pi){ var ids = orderedIds(), j, t; for(j = 0; j < ids.length; j++) if(partOf(ids[j]) === pi+1){ t = nextTarget(ids[j]); if(t) return t; } return null; }
 function storyFor(id){ for(var k in STORIES) if(STORIES[k].lesson === id) return k; return null; }
 function allQuotes(){ var out = []; orderedIds().forEach(function(id){ ((LESSONS[id] || {}).quotes || []).forEach(function(q){ out.push({q:q, lesson:id}); }); }); return out; }
 function knownCount(){ return allQuotes().filter(function(x){ return quoteState(x.q.id).lvl >= 3; }).length; }
@@ -186,9 +197,10 @@ function startQuiz(id){
   go('quiz', true);
 }
 function vQuiz(){
-  var z = quiz, s;
+  var z = quiz, s, nx, good;
   if(z.done){
-    s = '<h1>'+z.title+'</h1><div class="card"><p class="qtext">'+z.score+' of '+z.qs.length+' correct</p><p>You earned '+z.coins+' coins.</p><div class="row"><button class="btn" data-act="quiz:'+z.id+'">Try again</button><button class="btn plain" data-act="'+z.back+'">Back</button><button class="btn plain" data-act="go:shop">Open the shop</button></div></div>';
+    nx = nextAfter(z.id); good = z.score >= z.qs.length-1;
+    s = '<h1>'+z.title+'</h1><div class="card"><p class="qtext">'+z.score+' of '+z.qs.length+' correct</p><p>You earned '+z.coins+' coins.</p>'+(nx ? '<p class="small muted">Next is '+nx.label+'.</p>' : '')+'<div class="row">'+(nx && good ? '<button class="btn" data-act="'+nx.act+'">Next</button>' : '')+'<button class="btn'+(nx && good ? ' plain' : '')+'" data-act="quiz:'+z.id+'">Try again</button>'+(nx && !good ? '<button class="btn plain" data-act="'+nx.act+'">Next</button>' : '')+'<button class="btn plain" data-act="'+z.back+'">Back</button><button class="btn plain" data-act="go:shop">Open the shop</button></div></div>';
     if(z.wrong.length) s += '<h2>Questions to look at again</h2>'+z.wrong.map(function(w){ return '<div class="card flat"><p><b>'+w.q.text+'</b></p><p>Your answer: '+w.q.opts[w.picked]+'</p><p>Correct answer: '+w.q.opts[w.q.correct]+'</p><p class="small">'+w.q.explain+'</p></div>'; }).join('');
     return s;
   }
@@ -258,15 +270,20 @@ function vRecall(){
 }
 
 /* ---------- section tests ---------- */
+/* What a test question is about. A test mixes questions from every lesson of a part, so each one says where it comes from. */
+var CTX = {'1.1':'Wilfred Owen’s life and the First World War', '1.2':'Owen’s Preface and Stallworthy’s introduction', '1.3':'the techniques Owen uses in his poems', '1.11':'themes across Owen’s poems',
+  '2.1':'the whole story of The Great Gatsby', '2.2':'the characters of The Great Gatsby', '2.3':'Fitzgerald and America in the 1920s', '2.4':'Nick Carraway, the narrator of The Great Gatsby', '2.11':'Gatsby and Daisy', '2.12':'Tom, Myrtle, George and Jordan in The Great Gatsby', '2.13':'symbols and settings in The Great Gatsby', '2.14':'the themes of The Great Gatsby',
+  '3.1':'the whole story of Macbeth', '3.2':'the characters of Macbeth', '3.3':'Shakespeare, King James and the world of Macbeth', '3.4':'Shakespeare’s language in Macbeth', '3.11':'the character of Macbeth', '3.12':'the character of Lady Macbeth', '3.13':'Banquo, Macduff, Duncan, Malcolm and the witches in Macbeth', '3.14':'themes and imagery in Macbeth'};
+function contextFor(id){ if(CTX[id]) return CTX[id]; var L = LESSONS[id], pi = partOf(id); if(!L) return PARTS[pi].text; return pi === 0 ? 'the poem '+L.title : L.title+' of '+PARTS[pi].text; }
 function partPools(pi){
   var qs = [], quotes = [];
-  Object.keys(LESSONS).forEach(function(id){ if(partOf(id) !== pi) return; var L = LESSONS[id]; (L.questions || []).forEach(function(q){ qs.push(q); }); (L.quotes || []).forEach(function(q){ if(q.t.split(' ').length >= 5) quotes.push(q); }); });
-  for(var k in STORIES) if(partOf(STORIES[k].lesson) === pi) STORIES[k].questions.forEach(function(q){ qs.push(q); });
+  Object.keys(LESSONS).forEach(function(id){ if(partOf(id) !== pi) return; var L = LESSONS[id]; (L.questions || []).forEach(function(q){ qs.push({q:q, id:id}); }); (L.quotes || []).forEach(function(q){ if(q.t.split(' ').length >= 5) quotes.push(q); }); });
+  for(var k in STORIES) if(partOf(STORIES[k].lesson) === pi) STORIES[k].questions.forEach(function(q){ qs.push({q:q, id:STORIES[k].lesson}); });
   return {qs:qs, quotes:quotes};
 }
 function testReady(pi){ var P = partPools(pi); return P.qs.length >= 10 && P.quotes.length >= 10; }
 function startTest(pi){
-  var P = partPools(pi), items = sample(P.qs, 10).map(function(q){ return {type:'mc', q:buildQ(q)}; });
+  var P = partPools(pi), items = sample(P.qs, 10).map(function(x){ return {type:'mc', q:buildQ(x.q), ctx:contextFor(x.id)}; });
   sample(P.quotes, 10).forEach(function(q){ var toks = q.t.split(' '), cut = Math.max(2, Math.round(toks.length*0.4)); items.push({type:'line', quote:q, shown:toks.slice(0,cut).join(' '), target:toks.slice(cut).join(' '), cut:cut}); });
   test = {pi:pi, items:items, i:0, score:0, res:null, done:false, wrong:[]};
   go('test', true);
@@ -276,7 +293,7 @@ function vTest(){
   if(T.done){
     var pass = T.score >= 14;
     s = '<h1>'+P.name+' test</h1><div class="card"><p class="qtext">'+T.score+' of 20</p><p>'+(pass ? 'You passed. The pass mark is 14.' : 'The pass mark is 14. You can take the test again as often as you like.')+'</p>'+(T.msg ? '<p><b>'+T.msg+'</b></p>' : '')+
-      '<div class="row"><button class="btn" data-act="test:'+T.pi+'">Take it again</button><button class="btn plain" data-act="go:learn">Back to Learn</button>'+(pass ? '<button class="btn plain" data-act="go:shop">Open the shop</button>' : '')+'</div></div>';
+      '<div class="row">'+(pass && nextPart(T.pi) ? '<button class="btn" data-act="'+nextPart(T.pi).act+'">Next</button>' : '')+'<button class="btn'+(pass && nextPart(T.pi) ? ' plain' : '')+'" data-act="test:'+T.pi+'">Take it again</button><button class="btn plain" data-act="go:learn">Back to Learn</button>'+(pass ? '<button class="btn plain" data-act="go:shop">Open the shop</button>' : '')+'</div></div>';
     if(T.wrong.length) s += '<h2>Answers to look at again</h2>'+T.wrong.map(function(w){ return '<div class="card flat">'+w+'</div>'; }).join('');
     return s;
   }
@@ -284,7 +301,7 @@ function vTest(){
   s = '<div class="row between"><span class="chip blue">Question '+(T.i+1)+' of 20</span><button class="btn plain" data-act="go:learn">Leave</button></div>';
   if(it.type === 'mc'){
     var q = it.q, done = res !== null;
-    s += '<p class="qtext">'+q.text+'</p><div class="opts">'+q.opts.map(function(o, i){ return '<button class="opt'+(done && i === q.correct ? ' right' : done && i === res.picked ? ' wrong' : '')+'" data-act="tanswer:'+i+'"'+(done ? ' disabled' : '')+'>'+o+'</button>'; }).join('')+'</div>';
+    s += '<p class="small muted">This question is about <b>'+it.ctx+'</b>.</p><p class="qtext">'+q.text+'</p><div class="opts">'+q.opts.map(function(o, i){ return '<button class="opt'+(done && i === q.correct ? ' right' : done && i === res.picked ? ' wrong' : '')+'" data-act="tanswer:'+i+'"'+(done ? ' disabled' : '')+'>'+o+'</button>'; }).join('')+'</div>';
     if(done) s += '<div class="fb '+(res.ok ? 'good' : 'bad')+'"><b>'+(res.ok ? 'Correct.' : 'Not correct.')+'</b><span>'+q.explain+'</span></div>';
   } else {
     var qq = it.quote;
@@ -415,7 +432,7 @@ function act(a){
     else { L = lessonState(quiz.id); quiz.coins = quiz.score*(quiz.first ? 10 : 5); L.quizzes++; L.best = Math.max(L.best, quiz.score); quiz.done = true; earn(quiz.coins, 'quiz'); earnKey(); render(); $('#main').scrollTop = 0; }
   }
   else if(cmd === 'test') startTest(+arg);
-  else if(cmd === 'tanswer'){ if(test && !test.res){ var tq = test.items[test.i].q, ok = +arg === tq.correct; test.res = {ok:ok, picked:+arg}; testMark(ok, '<p><b>'+tq.text+'</b></p><p>Correct answer: '+tq.opts[tq.correct]+'</p><p class="small">'+tq.explain+'</p>'); render(); reveal('#tnext'); } }
+  else if(cmd === 'tanswer'){ if(test && !test.res){ var tq = test.items[test.i].q, ok = +arg === tq.correct; test.res = {ok:ok, picked:+arg}; testMark(ok, '<p class="small muted">About '+test.items[test.i].ctx+'</p><p><b>'+tq.text+'</b></p><p>Correct answer: '+tq.opts[tq.correct]+'</p><p class="small">'+tq.explain+'</p>'); render(); reveal('#tnext'); } }
   else if(cmd === 'tcheck' || cmd === 'tskip'){ if(test && !test.res){ var ti = test.items[test.i], given = cmd === 'tskip' ? '' : ($('#ans') ? $('#ans').value : ''), mr = markText(ti.target, given), tok = cmd !== 'tskip' && mr.ok, sh = shownQuote(ti.quote.t, mr.marks, words(ti.shown).length); test.res = {ok:tok, shown:sh}; testMark(tok, '<p class="shown">“'+esc(ti.quote.t)+'”</p><p class="small">'+ti.quote.ref+'. '+ti.quote.means+'</p>'); render(); reveal('#tnext'); } }
   else if(cmd === 'tnext'){
     if(test.i < 19){ test.i++; test.res = null; render(); $('#main').scrollTop = 0; }

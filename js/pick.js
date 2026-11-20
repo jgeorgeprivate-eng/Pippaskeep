@@ -8,9 +8,9 @@ var CORE_QUOTES = (
   'di1 di6 di9 di12 ' +               /* Disabled */
   'an1 an3 an5 an11 ' +               /* Anthem for Doomed Youth */
   'se2 se6 se11 ' +               /* The Sentry */
-  'll1 ll4 ll6 ll8 ' +                /* The Last Laugh */
+  'sf1 sf2 sf3 sf4 sf5 ' +            /* The Send-Off */
   'fu1 fu5 fu8 fu9 ' +                /* Futility */
-  'sm2 sm7 sm10 sm12 ' +              /* Smile, Smile, Smile */
+  'mn1 mn2 mn3 mn4 ' +                /* Mental Cases */
   'gn1 gn2 ga2 ga4 ga7 gb1 gb7 gc4 gc6 gd3 gd4 ge1 ge2 ge8 gf2 gf3 gf4 gf5 gf7 gg2 gh2 gh6 gi5 ' +   /* The Great Gatsby */
   'ma1 ma4 ma7 ma8 mb2 mb3 mb5 mb7 mb9 mc1 mc2 mc5 mc7 md2 md4 md9 me4 me7 me9 mf1 mf2 mf5 mf7 mf11 mg4 mh3 mi4'   /* Macbeth */
 ).split(' ');

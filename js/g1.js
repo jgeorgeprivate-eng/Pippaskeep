@@ -112,5 +112,5 @@ LESSONS['2.4'] = {
     ['Why does Fitzgerald use Nick and not Gatsby as narrator?','To keep Gatsby mysterious, so the truth comes out in pieces',['Because Gatsby cannot write','Because Nick is the hero','To make the book shorter'],'We hear rumours first and the truth later.'],
     ['What does “within and without” mean?','Nick takes part in the rich world and also stands outside it, criticising',['He goes in and out of the house','He is rich and then poor','He has and has not got a ticket'],'He is enchanted and repelled together.'],
     ['When does Nick write the story?','Two years after the events',['During the summer it happens','Fifty years later','The day after Gatsby dies'],'He already knows the ending, which colours the opening pages.'],
-    ['What is Nick’s final judgement?','Gatsby was worth more than the rich people who used him',['Tom was right about Gatsby','Daisy was the victim','Nobody was to blame'],'“You’re worth the whole damn bunch put together.”']]
+    ['What is Nick’s final judgement of Gatsby?','Gatsby was worth more than the rich people who used him',['Tom was right about Gatsby','Daisy was the victim','Nobody was to blame'],'“You’re worth the whole damn bunch put together.”']]
 };

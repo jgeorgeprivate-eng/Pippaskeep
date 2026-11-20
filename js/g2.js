@@ -34,12 +34,12 @@ LESSONS['2.5'] = {
   questions:[
     ['Where does Nick live?','In a small rented house in West Egg, next to Gatsby',['In a mansion in East Egg','In New York City','In the valley of ashes'],'West Egg is the less fashionable village, where new money lives.'],
     ['How does Fitzgerald first show Tom’s character?','Through his powerful, aggressive body',['Through his kindness to Nick','Through a letter','Through his poetry'],'Nick calls it “a cruel body”.'],
-    ['Who telephones during dinner?','Tom’s mistress',['Gatsby','Nick’s father','Daisy’s mother'],'Jordan tells Nick. Everyone at the table knows.'],
+    ['Who telephones during the dinner in Chapter 1?','Tom’s mistress',['Gatsby','Nick’s father','Daisy’s mother'],'Jordan tells Nick. Everyone at the table knows.'],
     ['Why does Daisy hope her daughter will be a fool?','She believes a woman who understands her situation only suffers',['She dislikes her daughter','She thinks education is expensive','She is making a joke with no meaning'],'It is the bitterest thing she says, and it describes her own marriage.'],
     ['What does Daisy feel under her charm?','Unhappiness and humiliation',['Complete contentment','Hatred of Nick','Fear of Jordan'],'Her gaiety is a performance.'],
     ['What is Gatsby doing when Nick first sees him?','Standing alone at night, stretching his arms towards the bay',['Dancing at a party','Arguing with Tom','Driving his car'],'The first picture of Gatsby is of longing.'],
     ['What does the green light stand for?','Daisy, and the future Gatsby hopes for with her',['Money in the bank','A warning to ships only','Tom’s jealousy'],'It is at the end of Daisy’s dock.'],
-    ['Why does Fitzgerald keep Gatsby out of the chapter until the end?','To build mystery around him',['Because Gatsby is unimportant','Because Nick dislikes him','Because Gatsby is abroad'],'We hear his name twice before we see him.']]
+    ['Why does Fitzgerald keep Gatsby out of Chapter 1 until the end?','To build mystery around him',['Because Gatsby is unimportant','Because Nick dislikes him','Because Gatsby is abroad'],'We hear his name twice before we see him.']]
 };
 
 LESSONS['2.6'] = {
@@ -82,7 +82,7 @@ LESSONS['2.6'] = {
     ['What does Myrtle want?','To escape her class and live like the rich',['To run the garage','To return to her husband','To move to the Midwest'],'She copies the manners of the wealthy when she is with Tom.'],
     ['How does Gatsby behave at his own party?','He stands apart, sober and watchful',['He dances all night','He makes a long speech','He argues with the guests'],'The parties are for Daisy. He takes no pleasure in them.'],
     ['What surprises the owl-eyed man in the library?','The books are real',['The books are missing','Gatsby is reading','The library is locked'],'He expected cardboard. The pages are uncut, so nobody has read them.'],
-    ['How are the two parties alike?','Both are full of drink and pretending, and both end badly',['Both are small and private','Both are given by Tom','Both happen in the valley of ashes'],'Fitzgerald shows the same behaviour in both classes.'],
+    ['How are Myrtle’s party in Chapter 2 and Gatsby’s party in Chapter 3 alike?','Both are full of drink and pretending, and both end badly',['Both are small and private','Both are given by Tom','Both happen in the valley of ashes'],'Fitzgerald shows the same behaviour in both classes.'],
     ['What does “It takes two to make an accident” tell us about Jordan?','She expects other people to take care so that she does not have to',['She is a careful driver','She has never driven','She is afraid of cars'],'This attitude belongs to the whole rich set, and it leads to Myrtle’s death.']]
 };
 
@@ -124,7 +124,7 @@ LESSONS['2.7'] = {
     ['What happened the night before Daisy’s wedding?','She got drunk, held a letter and said she had changed her mind',['She ran away with Gatsby','She argued with Jordan','Tom broke her nose'],'The letter was from Gatsby. She married Tom the next day.'],
     ['Why did Daisy marry Tom?','He was present and rich, and Gatsby was poor and far away',['She had never loved Gatsby','Gatsby told her to','She wanted to live in France'],'She wants love and wants security more.'],
     ['Why did Gatsby buy his mansion?','So that he would be across the bay from Daisy',['To be near New York','Because Wolfshiem told him to','To be near Nick'],'Jordan tells Nick this in Chapter 4.'],
-    ['What does the stopped clock suggest?','Gatsby’s wish to stop time and return to the past',['That Nick is poor','That Daisy is late','That the house is haunted'],'He nearly breaks it. Time cannot be put back.'],
+    ['What does the stopped clock in Chapter 5 suggest?','Gatsby’s wish to stop time and return to the past',['That Nick is poor','That Daisy is late','That the house is haunted'],'He nearly breaks it. Time cannot be put back.'],
     ['Why does Daisy cry over the shirts?','They show the rich life with Gatsby that she could have had',['She dislikes the colours','She is allergic to silk','Tom gave her the same shirts'],'Feeling and money come together for her.'],
     ['What happens to the green light in Chapter 5?','It becomes just a light, because Gatsby now has Daisy beside him',['It goes out','It turns red','Tom removes it'],'Wanting was more magical than having.']]
 };
